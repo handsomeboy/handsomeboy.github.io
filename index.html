@@ -311,7 +311,9 @@
       
         
           
-            <p>现在测试一下’latex’是否正常工作<script type="math/tex">a^2+b^2=cZ^2</script></p>
+            <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+
+<p>现在测试一下’latex’是否正常工作<br>\begin{aligned}<br>f_Y(y) &amp; = f_X[h(y)]|h’(y)| \[2ex]<br>&amp; = f_X[h(y)]h’(y) \[2ex]<br>&amp; = \frac{1}{\theta}e^{-\frac{x}{\theta}}[\frac{dx}{dy}(-\frac{\theta}{ln(1-y)})] \[2ex]<br>&amp; = \frac{1}{\theta}e^{-\frac{-\frac{\theta}{ln(1-y)}}{\theta}}\frac{\theta}{1-y} \[2ex]<br>&amp; = \frac{1}{\theta}e^{ln(1-y)}\frac{\theta}{1-y} \[2ex]<br>&amp; = \frac{1-y}{\theta}\frac{\theta}{1-y} \[2ex]<br>&amp; = 1<br>\end{aligned}</p>
 
           
         
@@ -455,7 +457,7 @@
 </ol>
 <p>综上所述，我认为学习凸优化理论比较合适的路径是：</p>
 <ol>
-<li>学习/复习线性代数和多元微积分的知识。<br> 实际上，凸优化理论综合使用了线性代数和微积分的相关知识，比如方向导数，雅克比矩阵，海森矩阵，KKT条件等。<br> 这里强烈推荐MIT公开课<a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="external">《线性代数》</a>，Gilbert Strang教授主讲，学完之后，你会对线性代数有全新的认识。（没错，我是Strang教授的迷弟，为他疯狂打Call）</li>
+<li>学习/复习线性代数和多元微积分的知识。<br> 实际上，凸优化理论综合使用了线性代数和微积分的相关知识，比如方向导数，雅克比矩阵，海森矩阵，KKT条件等。<br> 这里强烈推荐MIT公开课<a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="noopener">《线性代数》</a>，Gilbert Strang教授主讲，学完之后，你会对线性代数有全新的认识。（没错，我是Strang教授的迷弟，为他疯狂打Call）</li>
 <li>学习《Optimization Model》<br>这门课的学习过程，可以结合方述诚教授的《线性规划》和《非线性规划》的适配，学习效果更佳。</li>
 <li>学习《凸优化》<br> 有了1和2的准备，其实《凸优化》这本书已经差不多学习了60%，剩下的就是丰满自己的羽翼啦，把各个知识点串起来，形成网络。如果你有时间，还可以再看看台湾Chong-yung Chi老师写的一本书《Convex Optimization in signal and communication》，虽然书名是一本应用导向的书，但其实主要内容是理论和算法，真正应用的部分不算多。关键是讲解很细致。</li>
 </ol>
@@ -475,25 +477,25 @@
 <tbody>
 <tr>
 <td>Standford</td>
-<td><a href="https://web.stanford.edu/~boyd/index.html" target="_blank" rel="external">Stephen P. Boyd</a></td>
+<td><a href="https://web.stanford.edu/~boyd/index.html" target="_blank" rel="noopener">Stephen P. Boyd</a></td>
 <td>EE364A</td>
 <td>EE364B</td>
 </tr>
 <tr>
 <td>UC berkeley</td>
-<td><a href="https://people.eecs.berkeley.edu/~elghaoui/index.html" target="_blank" rel="external">Laurent El Ghaoui</a></td>
+<td><a href="https://people.eecs.berkeley.edu/~elghaoui/index.html" target="_blank" rel="noopener">Laurent El Ghaoui</a></td>
 <td>EE127AT</td>
 <td>EE227BT</td>
 </tr>
 <tr>
 <td>UCLA</td>
-<td><a href="http://www.seas.ucla.edu/~vandenbe/index.html" target="_blank" rel="external">L. Vandenberghe</a></td>
+<td><a href="http://www.seas.ucla.edu/~vandenbe/index.html" target="_blank" rel="noopener">L. Vandenberghe</a></td>
 <td>EE236A</td>
 <td>EE236B/EE236C</td>
 </tr>
 <tr>
 <td>CMU</td>
-<td><a href="http://www.stat.cmu.edu/~ryantibs/" target="_blank" rel="external">Ryan Tibshirani</a></td>
+<td><a href="http://www.stat.cmu.edu/~ryantibs/" target="_blank" rel="noopener">Ryan Tibshirani</a></td>
 <td>10-725</td>
 <td>10-725</td>
 </tr>
@@ -1893,7 +1895,24 @@
 
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
