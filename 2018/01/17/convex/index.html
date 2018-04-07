@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“凸优化理论真的很美”这是我学习完之后得到的切身感受。然而，在没认识到庐山真面目之前，她给我的感受却恰恰是个“冰山美人”，让人即爱又恨。明明知道，她在工程中具有非常多的应用，但各种技术细节却总让我冥思苦想，真是个磨人的小妖精！ 本来我的课题是多目标优化，主要研究内容是将智能优化算法扩展到多目标优化领域。涉及的优化算法主要是遗传算法，差分进化，粒子群算法等。读的文献清一色地“鼓吹”智能优算优于传统的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的凸优化学习之路">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/convex/index.html">
+<meta property="og:site_name" content="韩鼎の个人网站">
+<meta property="og:description" content="“凸优化理论真的很美”这是我学习完之后得到的切身感受。然而，在没认识到庐山真面目之前，她给我的感受却恰恰是个“冰山美人”，让人即爱又恨。明明知道，她在工程中具有非常多的应用，但各种技术细节却总让我冥思苦想，真是个磨人的小妖精！ 本来我的课题是多目标优化，主要研究内容是将智能优化算法扩展到多目标优化领域。涉及的优化算法主要是遗传算法，差分进化，粒子群算法等。读的文献清一色地“鼓吹”智能优算优于传统的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/01/17/convex/chenbaolin.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/01/17/convex/lu.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/01/17/convex/boyd.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/01/17/convex/model.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/01/17/convex/signal.jpg">
+<meta property="og:updated_time" content="2018-01-17T11:31:00.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的凸优化学习之路">
+<meta name="twitter:description" content="“凸优化理论真的很美”这是我学习完之后得到的切身感受。然而，在没认识到庐山真面目之前，她给我的感受却恰恰是个“冰山美人”，让人即爱又恨。明明知道，她在工程中具有非常多的应用，但各种技术细节却总让我冥思苦想，真是个磨人的小妖精！ 本来我的课题是多目标优化，主要研究内容是将智能优化算法扩展到多目标优化领域。涉及的优化算法主要是遗传算法，差分进化，粒子群算法等。读的文献清一色地“鼓吹”智能优算优于传统的">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/17/convex/chenbaolin.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/convex/"/>
+
+
+
+
+
+  <title>我的凸优化学习之路 | 韩鼎の个人网站</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">韩鼎の个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/convex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩鼎">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩鼎の个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我的凸优化学习之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T18:19:41+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>“凸优化理论真的很美”这是我学习完之后得到的切身感受。然而，在没认识到庐山真面目之前，她给我的感受却恰恰是个“冰山美人”，让人即爱又恨。明明知道，她在工程中具有非常多的应用，但各种技术细节却总让我冥思苦想，真是个磨人的小妖精！</p>
+<p>本来我的课题是多目标优化，主要研究内容是将智能优化算法扩展到多目标优化领域。涉及的优化算法主要是遗传算法，差分进化，粒子群算法等。读的文献清一色地“鼓吹”智能优算优于传统的（基于梯度的）优化算法，如最速下降法，牛顿法，拟牛顿法等。可以说，我跟传统的数学优化算法无缘，大家楚汉之界，泾渭分明。</p>
+<p>然而，古人云“天下大事，分久必合，合久必分”，近几年，多目标优化领域最新的研究方向就是将智能优化算法与传统的优化算法相结合。在这个方向上，华人学者张青富提出的MOEA/D是典型代表，该算法的核心思想是将多目标优化问题通过权重向量转化为多个单目标优化问题，并同时求解。沿着这个思路，我想寻找创新点。</p>
+<img src="/2018/01/17/convex/chenbaolin.jpg" width="400" height="300">
+<p>工欲善其事必先利其器，为了打基础，我需要系统地学习下最优化理论。可是，之前研究生课《最优化理论》早就被我忘得一干二净(事实上，我不确定上过这门课)。那就只好自学。翻开当年的课本，清华大学陈宝林的《最优化理论与算法》，满页的公式对于非数学系的我真是相当不友好。如果没有人教，自学的话相当吃力，至少单纯型法（Simplex Method），我当年是看不懂的。</p>
+<img src="/2018/01/17/convex/lu.jpg" width="400" height="300">
+<p>于是在网上寻找相关的视频教程，发现都是运筹学的相关课程，内容又乱又杂，良莠不齐，很是让人失望，几乎没有人讲得清晰透彻。偶然间，看到加拿大维多利亚大学陆吾生教授在华东师范大学讲授的暑期课程，如获至宝。陆教授写了一本书《Practical Optimization  Algorithms and Engineering》，而该课程基本上就是按照这本书的内容讲授，只不过速度比较快。陆老师讲课深入浅出，非常让人容易接受。课程内容也是干货十足，不仅有传统的线性规划，还讲到了正定规划和多项式规划，在我看来真的是诚意十足，眼界大开。这里不得不吐槽下国内很多老师的讲课，很Boring，很多问题只告诉你怎么做，却不告诉你为什么？这样考试可能会得高分，却不是真正的做学问，学完之后很快就会忘。“授人以鱼不如授人以渔”！（陆老师2016年在我校讲授过机器学习的课程，当时没得到消息，没去听课，甚是遗憾）。</p>
+<img src="/2018/01/17/convex/boyd.jpg" width="400" height="300">
+<p>学习完陆老师的课之后，就接触了凸优化领域相当著名的一本书，美国斯坦福大学Boyd教授(2017年当选中国工程院院士)所著的《Convex Optimization》。怀着激动地心情翻开前几页，心情down到了谷底，这TM都讲的什么？相对内点，对偶范数，凸锥，逐点上确界等等概念接踵而至，劈头盖脸，我怎么感觉自己什么都不会了？凸优化真的这么难么？真是备受打击！不得已，这本书就被我束之高阁了。</p>
+<p>又过了一段时间，因为课题需要，研究了一下图论中的二分图最大权匹配问题，自然而然地涉及线性规划问题(Linear Programming)。然后就在网上找了台湾国立交通大学的公开课，上面有美国北卡莱罗纳大学方述诚教授暑期课程线性规划，就像当年看陆吾生教授的课一样，感觉棒棒哒！当学生能够遇到这样的老师真幸福至极。方老师采用启发式教学，很多概念都会用几何的语言解释，学习的过程畅快淋漓。记得当年在寝室，一看就是一下午。上完课的收获就是，我感觉我自己智力还在线，内功已经修炼到一定程度，可以攻克凸优化这个大山了。另外提一点，方老师开设的另外一门课《非线性规划》也是非常的好（还未看完）。</p>
+<p>接着再次翻看Boyd的《凸优化》，突然发现貌似没有以前那么难了，很多概念能模模糊糊地看懂了。但还是感觉不顺畅。</p>
+<p>于是再次求助万能的网络，找到了印度的<a href="www.nptel.com">公开课网站</a>上面有众多高质量的课程，这些课程多数由印度理工学院（相当于国内清华北大）所提供。其中《Convex Analysis》这门课看了前10课吧，总结下来，干货十足，但是感觉更像是数学系的课程，不太适合工科。另外一点：印度人的英语真的是让人蛋疼。所以作罢，等有时间再看吧。（另外，我觉得我越来越像数学系的了，居然对抽象代数和我微分几何感兴趣）。<br><img src="/2018/01/17/convex/model.jpg" width="400" height="300"></p>
+<p>我在网上有猎奇的嗜好，所以会在AMAZON上搜索凸优化相关的图书，偶然间遇到《Optimization Model》，看评论相当不错。然而网上却找不到电子版。所以只好求助图书馆，然而上海图书馆也没有这本书。我就只好把希望寄托在万能的淘宝上，结果惊喜地发现，有这本书的电子版，然后花费20元大洋购入。</p>
+<p>草草地地翻看完这本书之后，感觉相逢恨晚——这真的是凸优化学习之路上的第一本书啊。整本书好像知道初学者哪里不会，哪里不懂似的，总是在你理解有困难的时候提供帮助。而且，本书在最开始还提供了线性代数的相关知识，对于后续课程的学习大有裨益，这也是Boyd的书所缺乏的。后来才知道，这本书是美国加州大学伯克利分校上课的教材，作者Laurent El Ghaoui确实了解学生学习的难度。</p>
+<p>看完之后，再看Boyd的图书，就畅通无阻了。什么对偶理论，KKT条件，原本面目可憎，居然亲切起来。而且，居然能体会到，理论之美，前人怎么会有这样的想法，真的是太棒了。另外，Youtube上还有Boyd教授的上课视频作为补充（课程代号EE364A），虽然我认为他讲的课没有书写的好。</p>
+<p>Boyd的《凸优化》分分为三部分：理论，应用和算法。理论部涉及：凸集合，凸函数，凸优化问题，优化条件，对偶等内容。应用部分主要是将工程中常见的问题抽象为凸优化问题。而算法部分主要是以内点法为主。</p>
+<p>我个人认为，这本书作为凸优化的入门图书其实并不适合，主要原因有三点：</p>
+<ol>
+<li>内容太多，中文版《凸优化》将近700页，对于初学者，学习主干内容就可以了，可能也就200多页，但是前提是有人指导。</li>
+<li>算法内容有限，很多同学学习凸优化的目的可能更想学习算法部分，但该书主要讲解内点法，对于现在热门的次梯度法，近邻算子法等没有涉猎。</li>
+<li>有更合适的入门书籍《Optimization Model》.</li>
+</ol>
+<p>综上所述，我认为学习凸优化理论比较合适的路径是：</p>
+<ol>
+<li>学习/复习线性代数和多元微积分的知识。<br> 实际上，凸优化理论综合使用了线性代数和微积分的相关知识，比如方向导数，雅克比矩阵，海森矩阵，KKT条件等。<br> 这里强烈推荐MIT公开课<a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="noopener">《线性代数》</a>，Gilbert Strang教授主讲，学完之后，你会对线性代数有全新的认识。（没错，我是Strang教授的迷弟，为他疯狂打Call）</li>
+<li>学习《Optimization Model》<br>这门课的学习过程，可以结合方述诚教授的《线性规划》和《非线性规划》的适配，学习效果更佳。</li>
+<li>学习《凸优化》<br> 有了1和2的准备，其实《凸优化》这本书已经差不多学习了60%，剩下的就是丰满自己的羽翼啦，把各个知识点串起来，形成网络。如果你有时间，还可以再看看台湾Chong-yung Chi老师写的一本书《Convex Optimization in signal and communication》，虽然书名是一本应用导向的书，但其实主要内容是理论和算法，真正应用的部分不算多。关键是讲解很细致。</li>
+</ol>
+<img src="/2018/01/17/convex/signal.jpg" width="400" height="300">
+<p>经过上述学习过程，对凸优化理论的认识就比较深刻了。比方说你能够对支持向量机（Support Vector Machine）的对偶形式（Duality）不再陌生。能够对KKT条件的每个条件说出其中的道理，并能给出几何解释。但是，我发现以上所学习的也只是初级知识，内容大概是斯坦福大学的EE364A和加州伯克利分校EE127AT的内容，它们分别还有后续课程EE364B哥EE227BT两门课。这两门课涉及的内容主要是次梯度法，近邻算子，ADMM等优化算法，这算法主要是针对机器学习当中的问题而提出的，学习的难度也是不小，目前为也在学习当中（学无止境呀）。</p>
+<p>在这个过程中，在卡内基梅隆大学的教学视频《Convex Optimization》，在Youtube可以观看，包括2015、2016两年的视频，主讲人是Ryan Tibshirani（此君的老爸很厉害，同样在CMU，是LASSO的发明人），小伙子的PPT做的很不错，就是语速很快。PPT同样不错的还有UC Berkeley的EE227BT,和UCLA的EE236B。下面列出目前学习的资料：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>学校</th>
+<th>教授</th>
+<th>初级</th>
+<th>进阶</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standford</td>
+<td><a href="https://web.stanford.edu/~boyd/index.html" target="_blank" rel="noopener">Stephen P. Boyd</a></td>
+<td>EE364A</td>
+<td>EE364B</td>
+</tr>
+<tr>
+<td>UC berkeley</td>
+<td><a href="https://people.eecs.berkeley.edu/~elghaoui/index.html" target="_blank" rel="noopener">Laurent El Ghaoui</a></td>
+<td>EE127AT</td>
+<td>EE227BT</td>
+</tr>
+<tr>
+<td>UCLA</td>
+<td><a href="http://www.seas.ucla.edu/~vandenbe/index.html" target="_blank" rel="noopener">L. Vandenberghe</a></td>
+<td>EE236A</td>
+<td>EE236B/EE236C</td>
+</tr>
+<tr>
+<td>CMU</td>
+<td><a href="http://www.stat.cmu.edu/~ryantibs/" target="_blank" rel="noopener">Ryan Tibshirani</a></td>
+<td>10-725</td>
+<td>10-725</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以上所列资料都是非常优秀的教程，在学习的时候可以相互参考。实际上，看他们的PPT真是赏心悦目呀！</p>
+<p>至于凸优化的应用，包络信号处理，图像处理，计算金融，控制，几何问题，试验设计等等。但我认为最重要的领域是机器学习（Machine Learning），实际上机器学学习里面绝大多数问题（除了神经网路）最终都可以归结为凸优化问题，因此，用凸优化的视角学习机器学习，真的是很惬意。</p>
+<p>总结这几年学习凸优化的心得，发现凸优化其实并不难，关键是要用心学习。对关键概念的理解要深入，尤其是多思考，很过概念的引入动机是什么，多去发现问题，多去想反例。把知识形成网络，多思多考，才能融会贯通！</p>
+<p>“吾生也有涯 而知也无涯”，希望大家在学习凸优化的路上痛并快乐着！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/04/perceptron/" rel="next" title="perceptron">
+                <i class="fa fa-chevron-left"></i> perceptron
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/07/latextest/" rel="prev" title="latextest">
+                latextest <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">韩鼎</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩鼎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
