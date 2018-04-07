@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="韩鼎の个人网站">
 <meta property="og:description" content="现在测试一下$a^2+b^2=c^2$是否正常工作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-07T01:34:27.467Z">
+<meta property="og:updated_time" content="2018-04-07T02:02:15.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="latextest">
 <meta name="twitter:description" content="现在测试一下$a^2+b^2=c^2$是否正常工作">
@@ -310,9 +310,7 @@
       
 
       
-        <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
-
-<p>现在测试一下$a^2+b^2=c^2$是否正常工作</p>
+        <p>现在测试一下$a^2+b^2=c^2$是否正常工作</p>
 
       
     </div>
@@ -627,7 +625,46 @@
 
 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src=""></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -645,25 +682,8 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
   
 
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
 
   
 
