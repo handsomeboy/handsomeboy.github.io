@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T14:26:06.023Z">
+<meta property="og:updated_time" content="2018-04-22T14:32:37.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -339,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,419 字
+                  1,423 字
                 </span>
               
 
@@ -391,7 +391,7 @@
 <li>对于团，任何两点之间都有边链接。例如，由一条边连接的两个顶点，自然成为一个团，如$\{A,B\}$，$\{A,C\}$等.</li>
 <li>对于最大团，如果再增加 *任何* 一个顶点，就不再成为团。<br>  — 对于团$\{A,B\}$,还可以增加顶点$C$,形成团$\{A,B,C\}$,该团中任何两点都有边连接。因此，$\{A,B\}$不是最大团<br>  — 对于团$\{D,E\}$,我们看到，增加任何一个顶点，无法保证两点之间有边存在，例如，增加点$C$，则$\{C,D,E\}$中，不存在边$(C,E)$，因此$\{D,E\}$是最大团。</li>
 </ul>
-<p><img src="maxC.png" width="80%" height="80%" title="团与最大团"></p>
+<p><img src="maxC.png" width="80%" height="80%"></p>
 <h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi_C (X_C) \tag{1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。$\phi_C$是C上的势函数(potential function),要求严格为正。</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)概率密度函数是良定的(well defined)，即$\sum_X P(X)=1 $.</p>
@@ -416,8 +416,8 @@ P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
 <p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。<br><img src="/2018/04/22/MRF/twotype.png"></p>
 <p>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
-<li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{mn}，真实图像中的像素点$Y_{mn}$为未观测变量。 $X_{mn}$只与$Y_{mn}$有关。</li>
-<li>未观测变量之间： 未观测点$Y_{mn}$仅与其邻居变量集合有关。邻居变量集合包含该像素点上下左右四个像素点，即$Neighbor(Y_{m,n})=\{ Y_{m-1,n}，Y_{m+1,n}，Y_{m,n-1}，Y_{m,n+1}\}$</li>
+<li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{m,n}$，真实图像中的像素点$Y_{m,n}$为未观测变量。 $X_{m,n}$只与$Y_{m,n}$有关。</li>
+<li>未观测变量之间： 未观测点$Y_{mn}$仅与其邻居变量集合有关。邻居变量集合包含该像素点上下左右四个像素点，即$Nb(Y_{m,n})=\{Y_{m-1,n}，Y_{m+1,n}，Y_{m,n-1}，Y_{m,n+1}\}$</li>
 </ul>
 <p>综合上述两种情况，我们有如下的马尔科夫随机场模型：<br><img src="/2018/04/22/MRF/MRFgraph.png"> </p>
 <img src="/2018/04/22/MRF/result.png">
