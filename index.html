@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,099 字
+                  1,168 字
                 </span>
               
 
@@ -390,8 +390,10 @@ Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} 
 <p>如下图所示：<br><img src="/2018/04/22/MRF/ECUST.png"><br>是我们的真实图片(ground truth)。假设因为某些原因，如图像传输过程中受到干扰，我们得到如下所示的噪声图片(noise image):<br><img src="/2018/04/22/MRF/noise.png"><br>现在的问题是：我们想通过某些方法恢复出真实图像的样貌。</p>
 <p>借助于马尔科夫随机场理论，可以很好求解此问题。我们将图像中的每一个像素点看做一个随机变量，则整个图像就是随机变量的集合，对于噪声图像和真实图像分别有：</p>
 <script type="math/tex; mode=display">
-X=\{ X_{mn}，\quad m=1,\cdots,M; n=1,\cdots,N\} \\
-Y=\{ Y_{mn}，\quad m=1,\cdots,M; n=1,\cdots,N\}</script><p>其中，$M$和$N$是图像的尺寸。</p>
+X & =\{ X_{mn} | m=1,\cdots,M; n=1,\cdots,N\} \\
+Y & =\{ Y_{mn} | m=1,\cdots,M; n=1,\cdots,N\}</script><p>其中，$M$和$N$是图像的尺寸。<br>我们有了一张噪声图片，相当于对随机变量集合$X$进行了一次采样,得到了$X$的采样值$\mathbf{x}$,现在我们想知道$Y$的后验概率是多少，即:</p>
+<script type="math/tex; mode=display">
+P(Y|X=\mathbf{x})</script><p>并知道到使得上述公式最大的$Y$.</p>
 <img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
 
