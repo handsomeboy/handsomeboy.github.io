@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T16:23:03.928Z">
+<meta property="og:updated_time" content="2018-04-22T16:26:01.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -339,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,105 字
+                  2,174 字
                 </span>
               
 
@@ -420,9 +420,9 @@ P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=
 P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 & \\
 & \propto P(Y,X=\mathbf{x})\color{red}{\leftarrow\text{正比于}}
-\end{aligned}</script><p>由于$p(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题，即：</p>
+\end{aligned}</script><p>由于$P(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题，即：</p>
 <script type="math/tex; mode=display">
-\arg\max_Y P(Y|X=\mathbf{x})  \stackrel{等价于}{\Longleftrightarrow}  \arg\max_Y P(Y,X=\mathbf{x})</script><p>利用马尔科夫随机场，我们就可能获得$X$和$Y$的联合概率密度函数。</p>
+\arg\max_Y P(Y|X=\mathbf{x})\quad  \stackrel{等价于}{\Longleftrightarrow}\quad  \arg\max_Y P(Y,X=\mathbf{x})</script><p>现在，问题由求条件概率密度的最大值问题转变为求联合概率密度的最大值问题，我们需要知道联合概率密度的形式，而这就需要引入<br>马尔科夫随机场，由前面的数学准备可以，如果我们得到图结构，就可以写出这个联合概率密度函数。</p>
 <img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系">
 <p>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
