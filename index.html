@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,248 字
+                  1,414 字
                 </span>
               
 
@@ -399,7 +399,12 @@ arg\max_Y P(Y|X=\mathbf{x})</script><p>根据全概率公式：</p>
 P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
 & \propto P(X,Y)
 \end{aligned}</script><p>现在的问题转化为求$P(Y,X)$，即联合概率密度的的最大化问题。</p>
-<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。</p>
+<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。<br>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：<br><img src="/2018/04/22/MRF/twotype.png"></p>
+<ul>
+<li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{mn}，真实图像中的像素点$Y_{mn}$为未观测变量。 $X_{mn}$只与$Y_{mn}$有关。</li>
+<li>未观测变量之间： 未观测点$Y_{mn}$仅与其邻居变量集合有关。邻居变量集合包含该像素点上下左右四个像素点，即$Neighbor(Y_{mn})=\{ Y_{m-1,n},Y_{m+1,n}，Y_{m,n-1}，Y_{m,n+1}\}$</li>
+</ul>
+<p>综合上述两种情况，我们有如下的马尔科夫随机场模型：<br><img src="/2018/04/22/MRF/MRFgraph.png"> </p>
 <img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
 
@@ -2141,7 +2146,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.1k</span>
+    <span title="Site words total count">42.3k</span>
   
 </div>
 
