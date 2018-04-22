@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T16:14:45.535Z">
+<meta property="og:updated_time" content="2018-04-22T16:16:35.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -417,8 +417,9 @@ P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=
 <script type="math/tex; mode=display">
 \arg\max_Y P(Y|X=\mathbf{x}) \tag{2}</script><p>根据全概率公式：</p>
 <script type="math/tex; mode=display">\begin{aligned}
-P(Y|X=\mathbf{x})&=\frac{P(X=\mathbf{x},Y)}{P(X=\mathbf{x})}\\
-& \propto P(X=\mathbf{x},Y)\leftarrow\text{正比于}
+P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
+& \\
+& \propto P(Y,X=\mathbf{x})\color{red}{\leftarrow\text{正比于}}
 \end{aligned}</script><p>由于$p(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题。</p>
 <p>利用马尔科夫随机场，我们就可能获得$X$和$Y$的联合概率密度函数。</p>
 <img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系">

@@ -404,8 +404,9 @@ P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=
 <script type="math/tex; mode=display">
 \arg\max_Y P(Y|X=\mathbf{x}) \tag{2}</script><p>根据全概率公式：</p>
 <script type="math/tex; mode=display">\begin{aligned}
-P(Y|X=\mathbf{x})&=\frac{P(X=\mathbf{x},Y)}{P(X=\mathbf{x})}\\
-& \propto P(X=\mathbf{x},Y)\leftarrow\text{正比于}
+P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
+& \\
+& \propto P(Y,X=\mathbf{x})\color{red}{\leftarrow\text{正比于}}
 \end{aligned}</script><p>由于$p(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题。</p>
 <p>利用马尔科夫随机场，我们就可能获得$X$和$Y$的联合概率密度函数。</p>
 <img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系">
