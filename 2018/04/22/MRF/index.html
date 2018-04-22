@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/ECUST.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/noise.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T11:58:13.048Z">
+<meta property="og:updated_time" content="2018-04-22T12:17:09.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,172 字
+                  1,248 字
                 </span>
               
 
@@ -353,7 +353,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -403,7 +403,14 @@ Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} 
 X =\{ X_{mn} | m=1,\cdots,M; n=1,\cdots,N\} \\
 Y =\{ Y_{mn} | m=1,\cdots,M; n=1,\cdots,N\}</script><p>其中，$M$和$N$是图像的尺寸。<br>我们有了一张噪声图片，相当于对随机变量集合$X$进行了一次采样,得到了$X$的采样值$\mathbf{x}$,现在我们想知道$Y$的后验概率是多少，即:</p>
 <script type="math/tex; mode=display">
-P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=\mathbf{x})$最大.</p>
+P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=\mathbf{x})$最大.即如下的最优化问题：</p>
+<script type="math/tex; mode=display">
+arg\max_Y P(Y|X=\mathbf{x})</script><p>根据全概率公式：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
+& \propto P(X,Y)
+\end{aligned}</script><p>现在的问题转化为求$P(Y,X)$，即联合概率密度的的最大化问题。</p>
+<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。</p>
 <img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
 
@@ -630,7 +637,7 @@ P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.0k</span>
+    <span title="Site words total count">42.1k</span>
   
 </div>
 
