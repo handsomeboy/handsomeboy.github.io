@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T15:28:42.687Z">
+<meta property="og:updated_time" content="2018-04-22T15:30:28.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -415,7 +415,7 @@ arg\max_Y P(Y|X=\mathbf{x})</script><p>根据全概率公式：</p>
 P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
 & \propto P(X,Y)
 \end{aligned}</script><p>现在的问题转化为求$P(Y,X)$，即联合概率密度的的最大化问题。</p>
-<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。<br><img src="/2018/04/22/MRF/twotype.png" width="400"></p>
+<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。<br><img src="/2018/04/22/MRF/twotype.png" width="400" title="各变量之间的关系"></p>
 <p>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
 <li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{m,n}$，真实图像中的像素点$Y_{m,n}$为未观测变量。 $X_{m,n}$只与$Y_{m,n}$有关。</li>
