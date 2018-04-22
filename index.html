@@ -379,7 +379,7 @@
 <li>对于最大团，如果再增加 *任何* 一个顶点，就不再成为团。<br>  — 对于团$\{A,B\}$,还可以增加顶点$C$,形成团$\{A,B,C\}$,该团中任何两点都有边连接。因此，$\{A,B\}$不是最大团<br>  — 对于团$\{D,E\}$,我们看到，增加任何一个顶点，无法保证两点之间有边存在，例如，增加点$C$，则$\{C,D,E\}$中，不存在边$(C,E)$，因此$\{D,E\}$是最大团。</li>
 </ul>
 
-<p><img src="MRF/maxC.png" alt="test image size">{:height=”50%” width=”50%”}</p>
+<p><img src="maxC.png" alt="test image size">{:height=”50%” width=”50%”}</p>
 <h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi_C (X_C) \tag{1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。$\phi_C$是C上的势函数(potential function),要求严格为正。</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)概率密度函数是良定的(well defined)，即$\sum_X P(X)=1 $.</p>
