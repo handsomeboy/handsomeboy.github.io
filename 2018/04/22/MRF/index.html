@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T15:48:19.819Z">
+<meta property="og:updated_time" content="2018-04-22T16:12:28.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -339,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,032 字
+                  2,097 字
                 </span>
               
 
@@ -407,24 +407,25 @@ Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} 
 <p>是我们的真实图片(ground truth)。<br>假设因为某些原因，如图像传输过程中受到干扰，我们得到如下所示的噪声图片(noise image):</p>
 <img src="/2018/04/22/MRF/noise.png" title="噪声图片">
 <p>现在的问题是：我们想通过某些方法恢复出真实图像的样貌。</p>
-<p>借助于马尔科夫随机场理论，可以很好求解此问题。我们将图像中的每一个像素点看做一个随机变量，则整个图像就是随机变量的集合，对于噪声图像和真实图像分别有：</p>
+<p>借助于马尔科夫随机场理论，可以对此问题进行数学建模：将图像中的每一个像素点看做一个随机变量，则整副图像就是随机变量的集合，对于噪声图像和真实图像分别有：</p>
 <script type="math/tex; mode=display">
 X =\{ X_{mn} | m=1,\cdots,M; n=1,\cdots,N\} \\
-Y =\{ Y_{mn} | m=1,\cdots,M; n=1,\cdots,N\}</script><p>其中，$M$和$N$是图像的尺寸。<br>我们有了一张噪声图片，相当于对随机变量集合$X$进行了一次采样,得到了$X$的采样值$\mathbf{x}$,现在我们想知道$Y$的后验概率是多少，即:</p>
+Y =\{ Y_{mn} | m=1,\cdots,M; n=1,\cdots,N\}</script><p>其中，$M$和$N$是图像的尺寸。噪声图像包含的变量$X$是已观测变量，真实图像包含的变量$Y$是未观测变量。</p>
+<p>我们有了一张噪声图片，相当于对随机变量集合$X$进行了一次采样,得到了$X$的采样值$\mathbf{x}$,现在我们想知道$Y$的后验概率是多少，即:</p>
 <script type="math/tex; mode=display">
 P(Y|X=\mathbf{x})</script><p>并希望找到$\mathbf{y}$使得$P(Y=\mathbf{y}|X=\mathbf{x})$最大.即如下的最优化问题：</p>
 <script type="math/tex; mode=display">
-arg\max_Y P(Y|X=\mathbf{x})</script><p>根据全概率公式：</p>
+\arg\max_Y P(Y|X=\mathbf{x}) \tag{2}</script><p>根据全概率公式：</p>
 <script type="math/tex; mode=display">\begin{aligned}
-P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
-& \propto P(X,Y)
-\end{aligned}</script><p>现在的问题转化为求$P(Y,X)$，即联合概率密度的的最大化问题。</p>
-<p>关键词“联合概率函数”，使得我们可以利用马尔科夫随机场进行刻画，从而大展身手。</p>
+P(Y|X=mathbf{x})&=\frac{P(X=\mathbf{x},Y)}{P(X=\mathbf{x})}\\
+& \propto P(X=\mathbf{x},Y)
+\end{aligned}</script><p>由于$p(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题。</p>
+<p>利用马尔科夫随机场，我们就可能获得$X$和$Y$的联合概率密度函数。</p>
 <img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系">
 <p>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
 <li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{m,n}$，真实图像中的像素点$Y_{m,n}$为未观测变量。 $X_{m,n}$只与$Y_{m,n}$有关。</li>
-<li>未观测变量之间： 未观测点$Y_{mn}$仅与其邻居变量集合有关。邻居变量集合包含该像素点上下左右四个像素点，即$Nb(Y_{m,n})=\{Y_{m-1,n}，Y_{m+1,n}，Y_{m,n-1}，Y_{m,n+1}\}$</li>
+<li>未观测变量之间： 未观测点$Y_{mn}$仅与其邻居变量集合有关。邻居变量集合包含该像素点上下左右四个像素点，即$Nb(Y_{m,n})=\{Y_{m-1,n}，Y_{m+1,n}，Y_{m,n-1}，Y_{m,n+1}\}$。需要注意的是，在边界点处的像素，其邻域个体少于4个。</li>
 </ul>
 <p>综合上述两种情况，我们有如下的马尔科夫随机场模型：</p>
 <img src="/2018/04/22/MRF/MRFgraph.png" width="400" title="马尔科夫随机场"> 
@@ -654,7 +655,7 @@ P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.9k</span>
+    <span title="Site words total count">43.0k</span>
   
 </div>
 
