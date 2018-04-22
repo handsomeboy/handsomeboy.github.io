@@ -98,7 +98,7 @@
 <meta property="og:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图，也称贝叶斯网  - 2）无向图，也称马尔科夫随机场 - 3）因子图 三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T05:35:14.133Z">
+<meta property="og:updated_time" content="2018-04-22T05:38:29.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图，也称贝叶斯网  - 2）无向图，也称马尔科夫随机场 - 3）因子图 三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型">
@@ -332,7 +332,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  315 字
+                  326 字
                 </span>
               
 
@@ -377,7 +377,7 @@
 - 3）因子图
 </code></pre><p>三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型。</p>
 <p>马尔科夫随机场首先是无向图，我们先介绍无向图：在图论中，一个图表示为$G=(V,E)$，其中$V$是图的顶点，$E$代表顶点之间的边。我们一个典型的无向图如图所示。</p>
-<p>在概率图中，我们用顶点代表一个随机变量，用变代表随机变量之间的关系。马尔科夫随机场就是一种特殊的无向图模型，其特殊性在于，变量的联合密度函数可以写为：<br>$$<br>P(X)=\frac{1}{Z}\sum_{c\in C}\phi (X_c)<br>$$</p>
+<p>在概率图中，我们用顶点代表一个随机变量，用变代表随机变量之间的关系。马尔科夫随机场就是一种特殊的无向图模型，其特殊性在于，变量的联合密度函数可以写为：<br>$$<br>P(X)=\frac{1}{Z}\prod_{c\in C}\phi (X_c)<br>$$<br>其中<br>$$<br>Z=\sum_{X}\prod_{c\in C} \phi_c(X_c)<br>$$</p>
 <img src="/2018/04/22/MRF/result.png">
 
       
@@ -578,7 +578,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.2k</span>
+    <span title="Site words total count">41.3k</span>
   
 </div>
 
