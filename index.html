@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  503 字
+                  671 字
                 </span>
               
 
@@ -373,6 +373,12 @@
 </code></pre><p>三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型。</p>
 <h2 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h2><p>马尔科夫随机场定义在无向图上，因此我们先介绍无向图的定义：一个图表示为$G=(V,E)$，其中$V$是图的顶点集(Vertex set)，$E$代表(无向)边集合(Edges set)。一个典型的无向图如下图所示：<br><img src="/2018/04/22/MRF/udg.png"><br>其中:顶点集$V=\left\{ A,B,C,D,E\right\}$,边集合$E=\{(A,B),(B,C),(A,C),(A,D),(D,E)\}$，$p_2$注意到边集合中的的元素是两个顶点的<strong>无序对</strong>的形式，即交换前后位置不改变边，如$(A,B)$和$(B,A)$代表同一条边。</p>
 <h2 id="最大团"><a href="#最大团" class="headerlink" title="最大团"></a>最大团</h2><p>给定一张图$G=(V,E)$，和顶点集合的一个非空子集合$C\subset V$，如果$C$中任何两个顶点之间均有边链接，则称$C$为团(clique)；更进一步，若加入任何一个顶点$v \in G \backslash C$中的顶点，都使得$ C \cup {v}$不再是团,则称$C$为最大团(maximal clique)。</p>
+<p>上述定义比较抽象，可用下图辅助理解：</p>
+<ul>
+<li>对于团，任何两点之间都有边链接。如由一条边链接的两个顶点，自然成为一个团，如$\{A,B\}$.</li>
+<li>对于最大团，如果再增加<strong>任何</strong>一个顶点，就不再成为团。<br>  — 对于团$\{A,B\}$,还可以增加顶点$C$,形成团$\{A,B,C\}$,该团中任何两点都有边连接。因此，\{A,B\}不是最大团<br>  — 对于团$\{D,E\}$,我们看到，增加任何一个顶点，无法保证两点之间有边存在，例如，增加点$C$,则$\{C,D,E\}$中，不存在边$(C,E)$,因此$\{D,E\}$是最大团。</li>
+</ul>
+<img src="/2018/04/22/MRF/maxC.png">
 <h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在概率图中，我们用顶点代表一个随机变量，用变代表随机变量之间的关系。马尔科夫随机场就是一种特殊的无向图模型，其特殊性在于，变量的联合密度函数可以写为：</p>
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{c\in C}\phi (X_c)</script><p>其中</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{c\in C} \phi_c(X_c)</script><img src="/2018/04/22/MRF/result.png">
@@ -2116,7 +2122,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.4k</span>
+    <span title="Site words total count">41.5k</span>
   
 </div>
 
