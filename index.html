@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,423 字
+                  1,422 字
                 </span>
               
 
@@ -371,7 +371,9 @@
 - 2）无向图(undirected graph)，也称马尔科夫随机场(Markov Random Filed)
 - 3）因子图(Factor graph)
 </code></pre><p>三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型。</p>
-<h2 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h2><p>马尔科夫随机场定义在无向图上，因此我们先介绍无向图的定义：一个图表示为$G=(V,E)$，其中$V$是图的顶点集(Vertex set)，$E$代表(无向)边集合(Edge set)。一个典型的无向图如下图所示：<br><img src="/2018/04/22/MRF/udg.png" width="350" title="无向图"><br>其中:顶点集$V=\left\{ A,B,C,D,E\right\}$,边集合$E=\{(A,B),(B,C),(A,C),(A,D),(D,E)\}$，注意到边集合中的的元素是两个顶点的<strong>无序对</strong>的形式，即交换前后位置不改变边，如$(A,B)$和$(B,A)$代表同一条边。</p>
+<h2 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h2><p>马尔科夫随机场定义在无向图上，因此我们先介绍无向图的定义：一个图表示为$G=(V,E)$，其中$V$是图的顶点集(Vertex set)，$E$代表(无向)边集合(Edge set)。一个典型的无向图如下图所示：</p>
+<img src="/2018/04/22/MRF/udg.png" width="350" title="无向图">
+<p>其中:顶点集$V=\left\{ A,B,C,D,E\right\}$,边集合$E=\{(A,B),(B,C),(A,C),(A,D),(D,E)\}$，注意到边集合中的的元素是两个顶点的<strong>无序对</strong>的形式，即交换前后位置不改变边，如$(A,B)$和$(B,A)$代表同一条边。</p>
 <h2 id="最大团"><a href="#最大团" class="headerlink" title="最大团"></a>最大团</h2><p>给定一张图$G=(V,E)$，和顶点集合的一个非空子集合$C\subset V$，如果$C$中任何两个顶点之间均有边链接，则称$C$为团(clique)；更进一步，若加入任何一个顶点$v \in G \backslash C$中的顶点，都使得$ C \cup {v}$不再是团,则称$C$为最大团(maximal clique)。</p>
 <p>上述定义比较抽象，可用下图辅助理解：</p>
 <ul>
@@ -386,7 +388,7 @@
 <script type="math/tex; mode=display">\begin{aligned}  & P(X_A,X_B,X_C,X_D,X_E)\\
 =& \frac{1}{Z} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)} \end{aligned}</script><p>其中</p>
 <script type="math/tex; mode=display">
-Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><p>注意到，势函数$\phi_i,\quad i=1,2,3$分别对应三个最大团。</p>
+Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><p>注意到，势函数$\phi_i,i=1,2,3$分别对应三个最大团。</p>
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>有了上述数学准备，就可以对图像去噪问题进行数学建模。我们知道，一张数字图像在电脑中是以矩阵的形式存储的。例如，一张黑白照片可以是是一个行数1280，列数720的矩阵，矩阵中每一个元素代表一个像素，取值0或1，取值为0代表黑色，取值为1代表白色.<br>如下图所示：<br><img src="/2018/04/22/MRF/ECUST.png">是我们的真实图片(ground truth)。<br>假设因为某些原因，如图像传输过程中受到干扰，我们得到如下所示的噪声图片(noise image):<br><img src="/2018/04/22/MRF/noise.png"><br>现在的问题是：我们想通过某些方法恢复出真实图像的样貌。</p>
 <p>借助于马尔科夫随机场理论，可以很好求解此问题。我们将图像中的每一个像素点看做一个随机变量，则整个图像就是随机变量的集合，对于噪声图像和真实图像分别有：</p>
 <script type="math/tex; mode=display">
