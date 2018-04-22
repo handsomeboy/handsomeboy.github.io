@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,174 字
+                  2,187 字
                 </span>
               
 
@@ -409,8 +409,8 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 & \propto P(Y,X=\mathbf{x})\color{red}{\leftarrow\text{正比于}}
 \end{aligned}</script><p>由于$P(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题，即：</p>
 <script type="math/tex; mode=display">
-\arg\max_Y P(Y|X=\mathbf{x})\quad  \stackrel{等价于}{\Longleftrightarrow}\quad  \arg\max_Y P(Y,X=\mathbf{x})</script><p>现在，问题由求条件概率密度的最大值问题转变为求联合概率密度的最大值问题，我们需要知道联合概率密度的形式，而这就需要引入<br>马尔科夫随机场，由前面的数学准备可以，如果我们得到图结构，就可以写出这个联合概率密度函数。</p>
-<img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系">
+\arg\max_Y P(Y|X=\mathbf{x})\quad  \stackrel{等价于}{\Longleftrightarrow}\quad  \arg\max_Y P(Y,X=\mathbf{x})</script><p>现在，问题由求条件概率密度的最大值问题转变为求联合概率密度的最大值问题，我们需要知道联合概率密度的形式，而这就需要引入马尔科夫随机场，由前面的数学准备可知，如果我们得到图结构，就可以写出这个联合概率密度函数。</p>
+<p>现在，我们需要刻画这个图结构：<br><img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系"></p>
 <p>我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
 <li>观测变量和未观测变量： 噪声图像中的像素点为观测变量$X_{m,n}$，真实图像中的像素点$Y_{m,n}$为未观测变量。 $X_{m,n}$只与$Y_{m,n}$有关。</li>
@@ -2159,7 +2159,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">43.0k</span>
+    <span title="Site words total count">43.1k</span>
   
 </div>
 
