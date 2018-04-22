@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T13:49:55.179Z">
+<meta property="og:updated_time" content="2018-04-22T13:52:07.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -393,7 +393,7 @@
 </ul>
 <img src="/2018/04/22/MRF/maxC.png">
 <h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
-<script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi_C (X_C) \tag{公式1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。$\phi_C$是C上的势函数(potential function),要求严格为正。</p>
+<script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi_C (X_C) \tag{1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。$\phi_C$是C上的势函数(potential function),要求严格为正。</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)概率密度函数是良定的(well defined)，即$\sum_X P(X)=1 $.</p>
 <p>对于下图：<br><img src="/2018/04/22/MRF/jpdf.png" title="联合概率密度函数"><br>我们可以写出其联合概率密度函数：</p>
 <script type="math/tex; mode=display">\begin{aligned}  & P(X_A,X_B,X_C,X_D,X_E)\\
@@ -857,26 +857,46 @@ P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
+<!-- MathJax Start -->
+<!-- MathJax documentation: http://docs.mathjax.org/en/latest/index.html -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {  // tex2jax preprocessor
+      inlineMath: [ ['$','$'] ],  // delimiters for in-line math
+      displayMath: [ ['$$','$$'] ],  // delimiters for displayed equations
+      processEscapes: true,  // enable \$ to represent a single dollar sign
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  // MathJax will not process contents inside these tags 
+    },
+    TeX: {  // TeX/LaTeX input processor
+      equationNumbers: { autoNumber: "AMS" },  // only number those equations in specific AMSmath environments
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]  // introduce AMS extensions and suppress generating error messages 
+    },
+    "HTML-CSS": {  // HTML-CSS output processor (this is the default output of MathJax)
+      scale: 90,  // The scaling factor of math with respect to the surrounding text
+      linebreaks: { automatic: true } // automatically breaks the line if necessary
+    },
+    SVG: {  // SVG output processor
+      scale: 110,  // The scaling factor of math with respect to the surrounding text
+      linebreaks: { automatic: true } // automatically breaks the line if necessary
+    },
+    menuSettings: {  // settings for the mathematics contextual menu
+      zoom: "Hover"  // set equation zooming to be triggered by a single mouse click
+    }
+  });
+ 
+  MathJax.Hub.Queue(function() { // Fix <code> tags after MathJax finishes running, this is a hack to overcome a shortcoming of Markdown
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+      }
+  });
+</script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  // link to the MathJax CDN
+</script>
+<!-- MathJax End -->
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -894,8 +914,6 @@ P(Y|X)&=\frac{P(X,Y)}{P(X)}\\
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-  
-
 
   
 
