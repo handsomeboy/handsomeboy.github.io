@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  769 字
+                  797 字
                 </span>
               
 
@@ -381,13 +381,9 @@
 <img src="/2018/04/22/MRF/maxC.png">
 <h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi (X_C) \tag{公式(1)}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。</p>
-<script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C) $$称为规范化因子(Normailization Factor)，用于保证公式(1)是概率密度的定义，即$\sum_X P(X)=1$.
-
-如下图所示：
-<img src="/2018/04/22/MRF/jpdf.png">
-我们可以将联合概率密度函数表示为：</script><p>P(X_A,X_B,X_C,X_D,X_E)=\frac{1}{Z}\color{red}{\phi(X_A,X_B,X_C)}\phi(X_A,X_C,X_D)\phi (X_D,X_E)</p>
-<p>$$</p>
-<img src="/2018/04/22/MRF/result.png">
+<script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)是概率密度的定义，即$ \sum_X P(X)=1 $.</p>
+<p>如下图所示：<br><img src="/2018/04/22/MRF/jpdf.png"><br>我们可以将联合概率密度函数表示为：</p>
+<script type="math/tex; mode=display">P(X_A,X_B,X_C,X_D,X_E)=\frac{1}{Z} \phi (X_A,X_B,X_C)\phi (X_A,X_C,X_D)\phi (X_D,X_E)</script><img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
 
           
@@ -2128,7 +2124,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.6k</span>
+    <span title="Site words total count">41.7k</span>
   
 </div>
 
