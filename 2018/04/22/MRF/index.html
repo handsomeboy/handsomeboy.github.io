@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/maxC.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/jpdf.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-22T11:09:36.902Z">
+<meta property="og:updated_time" content="2018-04-22T11:10:48.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -335,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  822 字
+                  799 字
                 </span>
               
 
@@ -392,8 +392,9 @@
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi (X_C) \tag{公式1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)是概率密度的定义，即$ \sum_X P(X)=1 $.</p>
 <p>如下图所示：<br><img src="/2018/04/22/MRF/jpdf.png"><br>我们可以将联合概率密度函数表示为：</p>
-<script type="math/tex; mode=display">P(X_A,X_B,X_C,X_D,X_E)=\frac{1}{Z} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)} $$其中</script><p>Z=\sum_{\tiny X_A,X_B,X_C\\X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)} $$</p>
-<img src="/2018/04/22/MRF/result.png">
+<script type="math/tex; mode=display">P(X_A,X_B,X_C,X_D,X_E)=\frac{1}{Z} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><p>其中</p>
+<script type="math/tex; mode=display">
+Z=\sum_{\tiny X_A,X_B,X_C\\X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
 
       
