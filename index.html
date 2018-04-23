@@ -393,9 +393,9 @@
 Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><p>注意到，势函数$\phi_i,i=1,2,3$分别对应三个最大团。</p>
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><hr>
 <p>有了上述数学准备，就可以对图像去噪问题进行数学建模。我们知道，一张数字图像在电脑中是以矩阵的形式存储的。例如，一张黑白照片可以是是一个行数1280，列数720的矩阵，矩阵中每一个元素代表一个像素.假设下图：</p>
-<img src="/2018/04/22/MRF/ECUST.png" width="450" title="真实图片">
+<img src="/2018/04/22/MRF/ECUST.png" width="550" title="真实图片">
 <p>是一张真实图片(ground truth)。<br>假设因为某些原因，例如图像传输过程中受到干扰，我们得到如下所示的噪声图片(noise image):</p>
-<img src="/2018/04/22/MRF/noise.png" width="450" title="噪声图片">
+<img src="/2018/04/22/MRF/noise.png" width="550" title="噪声图片">
 <p>现在的问题是：如何通过某些方法恢复出真实图像的样貌。</p>
 <p>借助于马尔科夫随机场理论，可以对此问题进行数学建模：将图像中的素点看做随机变量，则整副图像就是随机变量的集合，对于噪声图像和真实图像分别有：</p>
 <script type="math/tex; mode=display">
