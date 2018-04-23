@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,470 字
+                  3,482 字
                 </span>
               
 
@@ -389,7 +389,8 @@
 =& \frac{1}{Z} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)} \end{aligned}</script><p>其中</p>
 <script type="math/tex; mode=display">
 Z=\sum_{\small  X_A,X_B,X_C\\ \small X_D,X_E} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)}</script><p>注意到，势函数$\phi_i,i=1,2,3$分别对应三个最大团。</p>
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>有了上述数学准备，就可以对图像去噪问题进行数学建模。我们知道，一张数字图像在电脑中是以矩阵的形式存储的。例如，一张黑白照片可以是是一个行数1280，列数720的矩阵，矩阵中每一个元素代表一个像素，取值0或1，取值为0代表黑色，取值为1代表白色.<br>如下图所示：</p>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><hr>
+<p>有了上述数学准备，就可以对图像去噪问题进行数学建模。我们知道，一张数字图像在电脑中是以矩阵的形式存储的。例如，一张黑白照片可以是是一个行数1280，列数720的矩阵，矩阵中每一个元素代表一个像素，取值0或1，取值为0代表黑色，取值为1代表白色.<br>如下图所示：</p>
 <img src="/2018/04/22/MRF/ECUST.png" title="真实图片">
 <p>是我们的真实图片(ground truth)。<br>假设因为某些原因，如图像传输过程中受到干扰，我们得到如下所示的噪声图片(noise image):</p>
 <img src="/2018/04/22/MRF/noise.png" title="噪声图片">
@@ -410,6 +411,7 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 \end{aligned}</script><p>由于$P(X=\mathbf{x})$是常数，我们不关心。因此(2)中的最优化问题可以转化为求$P(Y,X=\mathbf{x})$的最大化问题，即：</p>
 <script type="math/tex; mode=display">
 \arg\max_Y P(Y|X=\mathbf{x})\quad  \stackrel{等价于}{\Longleftrightarrow}\quad  \arg\max_Y P(Y,X=\mathbf{x})</script><p>现在，问题由求条件概率密度的最大值问题转变为求联合概率密度的最大值问题，我们需要知道联合概率密度的形式，而这就需要引入马尔科夫随机场，由前面的数学准备可知，如果我们得到图结构，就可以写出这个联合概率密度函数。</p>
+<h1 id="应用马尔科夫随机场理论建模及优化"><a href="#应用马尔科夫随机场理论建模及优化" class="headerlink" title="应用马尔科夫随机场理论建模及优化"></a>应用马尔科夫随机场理论建模及优化</h1><hr>
 <p>现在，我们需要刻画这个图结构：<br><img src="/2018/04/22/MRF/twotype.png" width="450" title="各变量之间的关系"></p>
 <p>噪声图片中的像素点认为是观测变量$X_{m,n}$，真实图片中的像素点$Y_{m,n}$为未观测变量，我们希望在真实图片和噪声图片之间建立关系，主要考虑两方面：</p>
 <ul>
@@ -454,17 +456,19 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
 <h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><hr>
 <p>应用上述Python程序，我们得到一下结果：<br><img src="/2018/04/22/MRF/result.png"></p>
 <p>可以看到，去噪后的图片与真实图片相当接近，去噪效果让人满意。</p>
-<h1 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h1><p>在定义势函数时，我们引入了参数$\alpha$和$\beta$,具体取值人为设定。实际上，这两个参数对最终的去噪效果影响很大。下面给出了两组参数设置情况下的不同去噪效果的比较：</p>
+<h1 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h1><hr>
+<p>在定义势函数时，我们引入了参数$\alpha$和$\beta$,具体取值人为设定。实际上，这两个参数对最终的去噪效果影响很大。下面给出了两组参数设置情况下的不同去噪效果的比较：</p>
 <p>在具体应用中，设定最优的参数值，一般需要多次试验，通过多次尝试得到最合适的参数设定。当然，我们可以通过优化的方法来寻找最优的$\alpha$和$\beta$，但前提是需要一组(真实图像，噪声图像)的训练样本集合，根据这些样本，我们可以通过求最大似然函数的方法得到最优的$\alpha^<em>$和$\beta^</em>$,其中涉及的计算量比较大，感兴趣的同学请搜索相关文献。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本博文针对噪声图像去噪问题展开研究，应用马尔科夫随机场对问题进行数学建模，将问题抽象为求最大后验概率密度函数的极值问题，并应用ICM方法将问题进一步分解为单变量优化问题并进行求解。实验证明，得到的去噪图片，去噪图片与真实图片的误差为0.6%，达到了满意的去噪效果。同时，本文还研究了参数$\alpha$和$\beta$变化时，对图像去噪效果的影响。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>本博文针对噪声图像去噪问题展开研究，应用马尔科夫随机场对问题进行数学建模，将问题抽象为求最大后验概率密度函数的极值问题，并应用ICM方法将问题进一步分解为单变量优化问题并进行求解。实验证明，得到的去噪图片，去噪图片与真实图片的误差为0.6%，达到了满意的去噪效果。同时，本文还研究了参数$\alpha$和$\beta$变化时，对图像去噪效果的影响。</p>
 <p>本文仅对二元黑白图像的去噪问题进行研究，灰度图像和彩色图像的去噪问题，请参见参考文献</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><hr>
+<ul>
 <li>1） <a href="http://www.cnblogs.com/simayuhe/p/5444091.html" target="_blank" rel="noopener">马尔科夫随机场(MRF)及其在图像降噪中的matlab实现</a></li>
-<li>2） <a href="http://www.sohu.com" target="_blank" rel="noopener">搜狐网</a></li>
-<li>3） <a href="https://blog.statsbot.co/probabilistic-graphical-models-tutorial-d855ba0107d1" target="_blank" rel="noopener">Probabilistic Graphical Models Tutorial</a></li>
-<li>4） <a href="https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf" target="_blank" rel="noopener">Graphical Models in a Nutshell</a></li>
-<li>5） <a href="">J.E. Besag. On the Statistical Analysis of Dirty Pictures. Journal of the Royal Statistical Society Series B, 1986.</a></li>
-<li>6)  <a href="http://stanford.edu/class/ee367/Winter2018/yue_ee367_win18_report.pdf" target="_blank" rel="noopener">Markov Random Fields and Gibbs Sampling for Image Denoising</a></li>
+<li>2） <a href="https://blog.statsbot.co/probabilistic-graphical-models-tutorial-d855ba0107d1" target="_blank" rel="noopener">Probabilistic Graphical Models Tutorial</a></li>
+<li>3） <a href="https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf" target="_blank" rel="noopener">Graphical Models in a Nutshell</a></li>
+<li>4） [J.E. Besag. On the Statistical Analysis of Dirty Pictures. Journal of the Royal Statistical Society Series B, 1986.]</li>
+<li>5)  <a href="http://stanford.edu/class/ee367/Winter2018/yue_ee367_win18_report.pdf" target="_blank" rel="noopener">Markov Random Fields and Gibbs Sampling for Image Denoising</a></li>
 </ul>
 
           
