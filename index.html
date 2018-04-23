@@ -431,8 +431,8 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 <p>有了(a)(b)两种情况下的势函数，我们就可以直接写出联合概率密度函数。</p>
 <script type="math/tex; mode=display">\begin{aligned}
 P(X,Y)&=\frac{1}{Z}\prod_i \left(\phi_a (X_i,Y_i)\prod_{j\in Nb(i)}\phi_b (Y_i,Y_j)\right)\\
-&= \frac{1}{Z}\prod_i\exp{\alpha X_iY_i +\sum_{j\in Nb(i)} \betaY_iY_j} \\
-&= \frac{1}{Z} \exp{\left(\sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)\right)}
+&= \frac{1}{Z}\prod_i\exp{\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_iY_j} \\
+&= \frac{1}{Z} \exp{\left[\sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)\right]}
 \end{aligned}\tag{3}</script><p>我们希望对(3)最大化，即最优的</p>
 <script type="math/tex; mode=display">\begin{aligned}
 \mathbf{y}^*&= \arg\max_{Y} P(X,Y)\\
