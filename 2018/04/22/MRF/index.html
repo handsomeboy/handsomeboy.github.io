@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
+<meta name="description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
 <meta name="keywords" content="MRF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta property="og:url" content="http://yoursite.com/2018/04/22/MRF/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
-<meta property="og:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
+<meta property="og:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/udg.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/maxC.png">
@@ -106,10 +106,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-23T04:06:10.452Z">
+<meta property="og:updated_time" content="2018-04-23T04:12:23.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
-<meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
+<meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/22/MRF/udg.png">
 
 
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,374 字
+                  3,393 字
                 </span>
               
 
@@ -380,7 +380,7 @@
         <p>本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。</p>
 <h1 id="数学准备"><a href="#数学准备" class="headerlink" title="数学准备"></a>数学准备</h1><hr>
 <p>在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。</p>
-<p>概率图模型，结合和图论和概论论的知识，分类有：</p>
+<p>概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有：</p>
 <pre><code>- 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network) 
 - 2）无向图(undirected graph)，也称马尔科夫随机场(Markov Random Filed)
 - 3）因子图(Factor graph)
@@ -472,7 +472,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
 <p>在具体应用中，设定最优的参数值，一般需要多次试验，通过多次尝试得到最合适的参数设定。当然，我们可以通过优化的方法来寻找最优的$\alpha$和$\beta$，但前提是需要一组(真实图像，噪声图像)的训练样本集合，根据这些样本，我们可以通过求最大似然函数的方法得到最优的$\lapha^<em>$和$\beta^</em>$,其中涉及的计算量比较大，感兴趣的同学请搜索相关文献。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本博文针对噪声图像去噪问题展开研究，应用马尔科夫随机场对问题进行数学建模，将问题抽象为求最大后验概率密度函数的极值问题，并应用ICM方法将问题进一步分解为单变量优化问题并进行求解。实验证明，得到的去噪图片，去噪图片与真实图片的误差为0.6%，达到了满意的去噪效果。同时，本文还研究了参数$\lapha$和$\beta$变化时，对图像去噪效果的影响。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
-<li><a href="http://www.sina.com.cn" target="_blank" rel="noopener">新浪网</a></li>
+<li><a href="http://www.cnblogs.com/simayuhe/p/5444091.html" target="_blank" rel="noopener">马尔科夫随机场(MRF)及其在图像降噪中的matlab实现</a></li>
 <li><a href="http://www.sohu.com" target="_blank" rel="noopener">搜狐网</a></li>
 <li><a href="https://blog.statsbot.co/probabilistic-graphical-models-tutorial-d855ba0107d1" target="_blank" rel="noopener">Probabilistic Graphical Models Tutorial</a></li>
 <li><a href="https://ai.stanford.edu/~koller/Papers/Koller+al:SRL07.pdf" target="_blank" rel="noopener">Graphical Models in a Nutshell</a></li>
@@ -707,7 +707,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.2k</span>
+    <span title="Site words total count">44.3k</span>
   
 </div>
 
