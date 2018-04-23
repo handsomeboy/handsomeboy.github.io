@@ -432,6 +432,7 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 <script type="math/tex; mode=display">\begin{aligned}
 P(X,Y)&=\frac{1}{Z}\prod_i \left(\phi_a (X_i,Y_i)\prod_{j\in Nb(i)}\phi_b (Y_i,Y_j)\right)\\
 &= \frac{1}{Z} \left( \prod_i \phi_a (X_i,Y_i) \right)\times \left( \prod_i \prod_{j\in Nb(i)}\phi_b (Y_i,Y_j) \right)\\
+&= \frac{1}{Z} \exp{\left(\sum_i \alpha X_iY_i \right)}\exp{\left( \sum_i\sum_{j\in Nb(i)} \beta Y_i,Y_j \right)}
 &= \frac{1}{Z} \exp{\left(\sum_i \alpha X_iY_i +\sum_i\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)}
 \end{aligned}\tag{3}</script><p>我们希望对(3)最大化，即最优的</p>
 <script type="math/tex; mode=display">\begin{aligned}
