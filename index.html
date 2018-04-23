@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,593 字
+                  2,615 字
                 </span>
               
 
@@ -422,17 +422,8 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 <p>为了后续公式看起来更简洁，我们单下标的方式来index矩阵中的像素点，令$i=(m,n)$，这样$X_i$即表示矩阵中第$i$行$j$列中的像素点。需要注意的是：此时$i=1,2,\cdots,M\times N$，即$i$的最大下标是$MN$.</p>
 <p>目前为止，我们还没有讨论势函数$\phi$的具体形式。实际上，除了要求$\phi$严格为正外，我们可以根据实际情况设置满足自己要求的函数形式，通过这种方式，我们加入了自己的领域知识(Domain Knowledge)。在此问题中，针对(a)和(b)两种情况，我们将$\phi$定义为指数函数的形式，即：</p>
 <ul>
-<li>(a) <script type="math/tex">\phi_a=\exp{\left\(\alpha X_i Y_i\right\)}</script></li>
-<li>(b) <script type="math/tex">\phi_b=\exp{\left\(\beta Y_i Y_j\right\)},\quad X_j\in Nb(X_i)</script><br>上式中，$\alpha$和$\beta$是参数。先对(a)进行分析，有下表：<script type="math/tex; mode=display">
-\begin{array}{rrr}
-X_i & Y_i & X_iY_i \\\\
-\hline
-1 & 1 & 1 \\
-1 & -1 & -1 \\
--1& 1 & -1 \\
--1 & -1 &1
-\hline
-\end{array}</script>我们注意到，当$X_i$与$Y_i$相同时，他们的积为1；当$X_i$与$Y_i$不相同时，他们的积为-1，这正好符合我们的直觉—噪声图像上的像素点总是与对应位置真实图像上的像素点取值相同。</li>
+<li>(a) <script type="math/tex">\phi_a=\exp{\left(\alpha X_i Y_i\right)}</script></li>
+<li>(b) <script type="math/tex">\phi_b=\exp{\left(\beta Y_i Y_j\right)},\quad X_j\in Nb(X_i)</script><br>上式中，$\alpha$和$\beta$是参数。先对(a)进行分析，有下表：<br>\begin{array}{rrr}<br>X_i &amp; Y_i &amp; X_iY_i \\<br>\hline<br>1 &amp; 1 &amp; 1 \\<br>1 &amp; -1 &amp; -1 \\<br>-1&amp; 1 &amp; -1 \\<br>-1 &amp; -1 &amp;1<br>\hline<br>\end{array}<br>我们注意到，当$X_i$与$Y_i$相同时，他们的积为1；当$X_i$与$Y_i$不相同时，他们的积为-1，这正好符合我们的直觉—噪声图像上的像素点总是与对应位置真实图像上的像素点取值相同。</li>
 </ul>
 <p>同理，对(b)进行分析，我们也可以得到相似的结论，同样符合直觉：真实图像上的像素点总是与其周围的像素点的取值相同。</p>
 <p>有了(a)(b)两种情况下的势函数，我们就可以直接写出联合概率密度函数。</p>
