@@ -435,10 +435,10 @@ P(X,Y)&=\frac{1}{Z}\prod_i \left(\phi_a (X_i,Y_i)\prod_{j\in Nb(i)}\phi_b (Y_i,Y
 &= \frac{1}{Z} \exp{\left[\sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)\right]}
 \end{aligned}\tag{3}</script><p>我们希望对(3)最大化，即最优的</p>
 <script type="math/tex; mode=display">\begin{aligned}
-\mathbf{y}^{*}&= \arg\max_{Y} \quad P(X,Y)\\
+\mathbf{y}^{*}&= \mathop{\arg\,\min}_{Y} \quad P(X,Y)\\
 \color{red}{log函数单调性\rightarrow}&=\arg\max_{Y} \quad \log{P(X,Y)}\\
-\color{red}{带入式(3)\rightarrow}& =\arg\max_{Y}\quad -\log{Z}+ \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)\\
-\color{red}{Z是常数\rightarrow}& \quad \arg\max_{Y_i\\
+\color{red}{带入式(3)\rightarrow}& =\mathop{\arg\,\min}_{Y}\quad -\log{Z}+ \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)\\
+\color{red}{Z是常数\rightarrow}&=\quad \mathop{\arg\,\min}_{Y_i\in {+1,-1}\\
 i=1,\cdots,M\times N} \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)
 \end{aligned}</script><img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
