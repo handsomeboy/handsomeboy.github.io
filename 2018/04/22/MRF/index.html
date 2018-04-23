@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-23T01:06:15.516Z">
+<meta property="og:updated_time" content="2018-04-23T01:07:35.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型，结合和图论和概论论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）无向图(undirected gra">
@@ -450,7 +450,7 @@ P(X,Y)&=\frac{1}{Z}\prod_i \left(\phi_a (X_i,Y_i)\prod_{j\in Nb(i)}\phi_b (Y_i,Y
 &= \frac{1}{Z} \exp{\left(\sum_i \alpha X_iY_i +\sum_i\sum_{j\in Nb(i)} \beta Y_i,Y_j\right)}
 \end{aligned}\tag{3}</script><p>我们希望对(3)最大化，即最优的</p>
 <script type="math/tex; mode=display">\begin{aligned}
-\mathbf{y}^{\*}&= \arg\max_{Y} P(X,Y)
+\mathbf{y}^*&= \arg\max_{Y} P(X,Y)\\
 \color{red}{log函数单调性\rightarrow}&=\arg\max{Y} \log{P(X,Y)}
 \end{aligned}</script><img src="/2018/04/22/MRF/result.png">
 <h1 id="去噪"><a href="#去噪" class="headerlink" title="去噪"></a>去噪</h1><hr>
