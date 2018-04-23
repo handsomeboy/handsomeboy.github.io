@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
+<meta name="description" content="摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了">
 <meta name="keywords" content="MRF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta property="og:url" content="http://yoursite.com/2018/04/22/MRF/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
-<meta property="og:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
+<meta property="og:description" content="摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/udg.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/maxC.png">
@@ -106,10 +106,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/twotype.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
-<meta property="og:updated_time" content="2018-04-23T04:53:36.018Z">
+<meta property="og:updated_time" content="2018-04-23T04:57:41.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
-<meta name="twitter:description" content="本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有： - 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network)  - 2）">
+<meta name="twitter:description" content="摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。 数学准备 在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。 概率图模型(Graphical Model )，结合了">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/22/MRF/udg.png">
 
 
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,482 字
+                  3,537 字
                 </span>
               
 
@@ -377,7 +377,7 @@
       
 
       
-        <p>本文应用概率图中的马尔科夫随机场理论，对一个二值噪声图像进行去噪处理，得到了满意的效果。</p>
+        <p>摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。</p>
 <h1 id="数学准备"><a href="#数学准备" class="headerlink" title="数学准备"></a>数学准备</h1><hr>
 <p>在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。</p>
 <p>概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有：</p>
@@ -714,7 +714,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.3k</span>
+    <span title="Site words total count">44.4k</span>
   
 </div>
 
