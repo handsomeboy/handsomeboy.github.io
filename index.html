@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,537 字
+                  3,594 字
                 </span>
               
 
@@ -365,15 +365,15 @@
           
             <p>摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。</p>
 <h1 id="数学准备"><a href="#数学准备" class="headerlink" title="数学准备"></a>数学准备</h1><hr>
-<p>在机器学习领域，概率图模型是一种高效的建模方法，表示能力很强。很多机器学习的模型都可以用概率图模型来表示。</p>
-<p>概率图模型(Graphical Model )，结合了图论和概率论的知识，分类有：</p>
+<p>在机器学习领域，概率图模型(Graphical Model)是一种将问题抽象成数学模型的高效建模方法，表示很强的表达能力。借助于概率图模型，很多机器学习的方法都可以用概率图模型来表示。</p>
+<p>概率图模型是综合了图论和概率论的知识。根据图的不同，概率图模型可以分为三类：</p>
 <pre><code>- 1）有向图(directed graph)，也称贝叶斯网(Bayesian Network) 
 - 2）无向图(undirected graph)，也称马尔科夫随机场(Markov Random Filed)
 - 3）因子图(Factor graph)
 </code></pre><p>三类图模型有各自优缺点，适应于不同的对象。本文的采用马尔科夫随机场模型。</p>
-<h2 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h2><p>马尔科夫随机场定义在无向图上，因此我们先介绍无向图的定义：一个图表示为$G=(V,E)$，其中$V$是图的顶点集(Vertex set)，$E$代表(无向)边集合(Edge set)。一个典型的无向图如下图所示：</p>
+<h2 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h2><p>马尔科夫随机场定义在无向图上，因此我们先介绍无向图的定义：一个无向图表示为$G=(V,E)$，其中$V$是图的顶点集(Vertex set)，$E$代表(无向)边集合(Edge set)。一个典型的无向图如下图所示：</p>
 <img src="/2018/04/22/MRF/udg.png" width="350" title="无向图">
-<p>其中:顶点集$V=\left\{ A,B,C,D,E\right\}$,边集合$E=\{(A,B),(B,C),(A,C),(A,D),(D,E)\}$，注意到边集合中的的元素是两个顶点的<strong>无序对</strong>的形式，即交换前后位置不改变边，如$(A,B)$和$(B,A)$代表同一条边。</p>
+<p>其中:顶点集$V=\left\{ A,B,C,D,E\right\}$,边集合$E=\{(A,B),(B,C),(A,C),(A,D),(D,E)\}$，注意到边集合中的的元素是两个顶点的<em>无序对</em>的形式，即交换前后位置不改变边，如$(A,B)$和$(B,A)$代表同一条边。</p>
 <h2 id="最大团"><a href="#最大团" class="headerlink" title="最大团"></a>最大团</h2><p>给定一张图$G=(V,E)$，和顶点集合的一个非空子集合$C\subset V$，如果$C$中任何两个顶点之间均有边链接，则称$C$为团(clique)；更进一步，若加入任何一个顶点$v \in G \backslash C$中的顶点，都使得$ C \cup {v}$不再是团,则称$C$为最大团(maximal clique)。</p>
 <p>上述定义比较抽象，可用下图辅助理解：</p>
 <ul>
@@ -381,10 +381,12 @@
 <li>对于最大团，如果再增加 *任何* 一个顶点，就不再成为团。<br>  — 对于团$\{A,B\}$,还可以增加顶点$C$,形成团$\{A,B,C\}$,该团中任何两点都有边连接。因此，$\{A,B\}$不是最大团<br>  — 对于团$\{D,E\}$,我们看到，增加任何一个顶点，无法保证两点之间有边存在，例如，增加点$C$，则$\{C,D,E\}$中，不存在边$(C,E)$，因此$\{D,E\}$是最大团。</li>
 </ul>
 <img src="/2018/04/22/MRF/maxC.png" width="400" title="团与最大团">
-<h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
+<h2 id="马尔科夫随机场"><a href="#马尔科夫随机场" class="headerlink" title="马尔科夫随机场"></a>马尔科夫随机场</h2><p>在无向图的基础上，我们用顶点代表一个随机变量(Random variable)，用边代表随机变量之间的依赖关系，这样，无向图就代表了众多变量之间的”联合”。而马尔科夫随机场就是一种特殊的无向图，其特殊性在于，变量的联合密度函数（joint probability density，pdf）可以根据图直接写出来：</p>
 <script type="math/tex; mode=display">P(X)=\frac{1}{Z}\prod_{C}\phi_C (X_C) \tag{1}</script><p>其中$C$是图$G$上的最大团。$Y_C$表示$C$对应的随机变量。需要注意的是，连乘$\prod_{C}$中，$C$要取遍所有的最大团。$\phi_C$是C上的势函数(potential function),要求严格为正。</p>
 <script type="math/tex; mode=display">Z=\sum_{X}\prod_{C} \phi_C(X_C)</script><p>称为规范化因子(Normailization Factor)，用于保证公式(1)概率密度函数是良定的(well defined)，即$\sum_X P(X)=1 $.</p>
-<p>对于下图：<br><img src="/2018/04/22/MRF/jpdf.png" width="380" title="联合概率密度函数"><br>我们可以写出其联合概率密度函数：</p>
+<p>对于下图：</p>
+<img src="/2018/04/22/MRF/jpdf.png" width="380" title="联合概率密度函数">
+<p>我们可以写出其联合概率密度函数：</p>
 <script type="math/tex; mode=display">\begin{aligned}  & P(X_A,X_B,X_C,X_D,X_E)\\
 =& \frac{1}{Z} \color{red}{\phi_1 (X_A,X_B,X_C)} \color{green}{\phi_2 (X_A,X_C,X_D)}\color{blue}{\phi_3 (X_D,X_E)} \end{aligned}</script><p>其中</p>
 <script type="math/tex; mode=display">
@@ -422,7 +424,7 @@ P(Y|X=\mathbf{x})&=\frac{P(Y,X=\mathbf{x})}{P(X=\mathbf{x})}\\
 <img src="/2018/04/22/MRF/MRFgraph.png" width="400" title="马尔科夫随机场"> 
 <p>值得注意的是，我们看到这种结构的马尔科夫随机场，其最大团即是任意一条边连接的两个顶点.</p>
 <p>为了后续公式看起来更简洁，我们单下标的方式来index矩阵中的像素点，令$i=(m,n)$，这样$X_i$即表示矩阵中第$i$行$j$列中的像素点。需要注意的是：此时$i=1,2,\cdots,M\times N$，即$i$的最大下标是$MN$.</p>
-<p>目前为止，我们还没有讨论势函数$\phi$的具体形式。实际上，除了要求$\phi$严格为正外，我们可以根据实际情况设置满足自己要求的函数形式，通过这种方式，我们加入了自己的领域知识(Domain Knowledge)。在此问题中，针对(a)和(b)两种情况，我们将$\phi$定义为指数函数的形式，即：</p>
+<p>目前为止，我们还没有讨论势函数$\phi$的具体形式。实际上，除了要求$\phi$严格为正外，我们可以根据实际情况设置满足自己要求的函数形式，通过这种方式，我们加入了自己的领域知识(Domain Knowledge),这给我们研究问题带来了很大的灵活性。在此问题中，针对(a)和(b)两种情况，我们将$\phi$定义为指数函数的形式，即：</p>
 <ul>
 <li>(a)    <script type="math/tex">\phi_a (X_i,Y_i)=\exp{\left(\alpha X_i Y_i\right)}</script></li>
 <li>(b)    <script type="math/tex">\phi_b (Y_i,Y_i)=\exp{\left(\beta Y_i Y_j\right)},\quad X_j\in Nb(X_i)</script></li>
@@ -2209,7 +2211,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\\\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.4k</span>
+    <span title="Site words total count">44.5k</span>
   
 </div>
 
