@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/MRFgraph.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/result.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/MRF/noiseall.png">
-<meta property="og:updated_time" content="2018-04-23T05:35:18.553Z">
+<meta property="og:updated_time" content="2018-04-23T05:37:37.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于马尔科夫随机场的图像去噪方法">
 <meta name="twitter:description" content="摘要：本文以二值噪声图像去噪问题为研究对象，应用概率图模型理论，建立去噪问题的马尔科夫随机场模型，将去噪问题转化为优化问题，并应用ICM算法进行优化求解。编制了Python程序，并进行数值仿真实验，结果表明，去噪效果令人满意。 数学准备 在机器学习领域，概率图模型(Graphical Model)是一种将问题抽象成数学模型的高效建模方法，表示很强的表达能力。借助于概率图模型，很多机器学习的方法都可">
@@ -476,7 +476,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
 <h1 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h1><hr>
 <p>在定义势函数时，我们引入了参数$\alpha$和$\beta$,具体取值人为设定。实际上，这两个参数对最终的去噪效果影响很大。下面给出了两组参数设置情况下的不同去噪效果的比较：</p>
 <img src="/2018/04/22/MRF/noiseall.png" width="450" title="不同参数下的去噪效果">
-<p>在具体应用中，设定最优的参数值，一般需要多次试验，通过多次尝试得到最合适的参数设定。当然，我们可以通过优化的方法来寻找最优的$\alpha$和$\beta$，但前提是需要一组(真实图像，噪声图像)的训练样本集合，根据这些样本，我们可以通过求最大似然函数的方法得到最优的$\alpha^{<em>}$和$\beta^{</em>}$,其中涉及的计算量比较大，感兴趣的同学请搜索相关文献。</p>
+<p>在具体应用中，设定最优的参数值，一般需要多次试验，通过多次尝试得到最合适的参数设定。当然，我们可以通过优化的方法来寻找最优的$\alpha$和$\beta$，但前提是需要一组(真实图像，噪声图像)的训练样本集合，根据这些样本，我们可以通过求最大似然函数的方法得到最优的 $\alpha^<em>$ 和 $\beta^</em>$ ,其中涉及的计算量比较大，感兴趣的同学请搜索相关文献。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <p>本博文针对噪声图像去噪问题展开研究，应用马尔科夫随机场对问题进行数学建模，将问题抽象为求最大后验概率密度函数的极值问题，并应用ICM方法将问题进一步分解为单变量优化问题并进行求解。实验证明，得到的去噪图片，去噪图片与真实图片的误差为0.6%，达到了满意的去噪效果。同时，本文还研究了参数$\alpha$和$\beta$变化时，对图像去噪效果的影响。</p>
 <p>本文仅对二元黑白图像的去噪问题进行研究，灰度图像和彩色图像的去噪问题，请参见参考文献</p>
