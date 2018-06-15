@@ -90,12 +90,12 @@
 
 
 
-<meta name="description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白色">
+<meta name="description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。 分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于颜色通道分离法去除图像中印章">
 <meta property="og:url" content="http://yoursite.com/2018/06/15/channel/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
-<meta property="og:description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白色">
+<meta property="og:description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。 分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/scaleimage.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/Redchannel.jpg">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/histgram.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/RedThresh.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/erode.jpg">
-<meta property="og:updated_time" content="2018-06-15T08:45:10.461Z">
+<meta property="og:updated_time" content="2018-06-15T08:46:48.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于颜色通道分离法去除图像中印章">
-<meta name="twitter:description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白色">
+<meta name="twitter:description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。 分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白">
 <meta name="twitter:image" content="http://yoursite.com/2018/06/15/channel/scaleimage.jpg">
 
 
@@ -377,9 +377,12 @@
       
         <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定如下一张图片：<img src="/2018/06/15/channel/scaleimage.jpg" title="图1 原始图片 (A)"> ​                                               </p>
 <p>我们希望去除图像中的<strong>红色</strong>的印章，以便能刚好地读取文字。</p>
-<h2 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h2><p>该问题中，<code>字</code>像素为前景（frontground），<code>印章</code>和<code>纸</code>所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。<br>分析图片我们发现，<code>字</code>的颜色是<strong>黑色</strong>, <code>印章</code>的颜色是<strong>红色</strong>，<code>纸</code>的颜色是<strong>灰色(接近白色)</strong>。</p>
+<h2 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h2><p>该问题中，<code>字</code>像素为前景（frontground），<code>印章</code>和<code>纸</code>所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。</p>
+<p>分析图片我们发现，<code>字</code>的颜色是<strong>黑色</strong>, <code>印章</code>的颜色是<strong>红色</strong>，<code>纸</code>的颜色是<strong>灰色(接近白色)</strong>。</p>
 <p>前景和背景在颜色上存在差异，这就使得我们想办法通过颜色特征将前景和背景分离。</p>
-<p>现在，我们分别提取原始图片的Red, Green和Blue三个颜色通道，得到如下三张图片：<br><img src="/2018/06/15/channel/Redchannel.jpg" title="图3 原始图片的Red通道图片 （B）"><br>​<br><img src="/2018/06/15/channel/Greenchannel.jpg" title="图4 原始图片的Green通道图片"><br>​<br><img src="/2018/06/15/channel/Bluechannel.jpg" title="图5 原始图片的Blue通道图片">​                                   </p>
+<p>现在，我们分别提取原始图片的Red, Green和Blue三个颜色通道，得到如下三张图片：</p>
+<img src="/2018/06/15/channel/Redchannel.jpg" title="图3 原始图片的Red通道图片 （B）">
+<p>​<br><img src="/2018/06/15/channel/Greenchannel.jpg" title="图4 原始图片的Green通道图片"><br>​<br><img src="/2018/06/15/channel/Bluechannel.jpg" title="图5 原始图片的Blue通道图片">​                                   </p>
 <p>图4，5与原始图像相似,利用价值不高。然而图2，即红色通道图片，非常值得我们关注：红色通道中，越红的色素点，其灰度值越高，其亮度值越接近255，在图2中看起来就越白。我们观察到在图2（红色通道的灰度图像）中：</p>
 <blockquote>
 <ol>
