@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/histgram.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/RedThresh.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/erode.jpg">
-<meta property="og:updated_time" content="2018-06-15T09:00:38.891Z">
+<meta property="og:updated_time" content="2018-06-15T09:03:40.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于颜色通道分离法去除图像中印章">
 <meta name="twitter:description" content="问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素为背景(background)。我们希望能将前景(字)提取出来。 分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸的颜色是灰色(接近白色)。">
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,281 字
+                  1,282 字
                 </span>
               
 
@@ -383,7 +383,7 @@
 <p>现在，我们分别提取原始图片的Red, Green和Blue三个颜色通道，得到如下三张图片：</p>
 <img src="/2018/06/15/channel/Redchannel.jpg" title="图2 原始图片的Red通道图片 （B）">
 <p>​<br><img src="/2018/06/15/channel/Greenchannel.jpg" title="图3 原始图片的Green通道图片"><br>​<br><img src="/2018/06/15/channel/Bluechannel.jpg" title="图4 原始图片的Blue通道图片">​                                   </p>
-<p>图3，4与原始图像相似，利用价值不高。然而图2，即红色通道图片，非常值得我们关注：原始图像1中越红的像素点，其在红色通道图2中的灰度值就越大，其灰度值越高，其值越接近255，看起来就越白。我们观察到在图2发现：</p>
+<p>图3，4与原始图像相似，利用价值不高。然而图2，即红色通道灰度值图片，非常值得我们关注：原始图像1中越红的像素点，其在红色通道图2中的灰度值就越大，其灰度值越高，越接近255，看起来就越白。我们观察到在图2发现：</p>
 <blockquote>
 <ol>
 <li><code>印章</code>像素为白色，灰度值接近255 </li>
