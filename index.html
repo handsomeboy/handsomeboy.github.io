@@ -379,7 +379,7 @@
 <p>此时，我们就可以通过一个<code>阈值</code>,将前景像素(<code>字</code>)提取出来。</p>
 <p>公式为：</p>
 <script type="math/tex; mode=display">I(x,y)= \begin{cases}    0,& \text{if } I(x,y)\leq  \text{threshold  }\\    255,  & \text{otherwise}\end{cases}</script><p>该阈值，可以通过求取图2的灰度直方图进行设定，如图6所示<br><img src="/2018/06/15/channel/histgram.png"></p>
-<p><center>图6 红色通道灰度直方图（**C**）</center><br>​<br>我们可以看到，图6所示的红色通道直方图中，明显存在两个<code>集中区域</code>，左侧的区域灰度值较低，对应颜色为<code>黑色</code>，是前景像素（字）；右侧集中区域灰度值较高，对应颜色为白色区域，是背景像素（印章和纸）。</p>
+<p><center>图6 红色通道灰度直方图</center>（<strong>C</strong>）<br>​<br>我们可以看到，图6所示的红色通道直方图中，明显存在两个<code>集中区域</code>，左侧的区域灰度值较低，对应颜色为<code>黑色</code>，是前景像素（字）；右侧集中区域灰度值较高，对应颜色为白色区域，是背景像素（印章和纸）。</p>
 <p>在这两个灰度集中的区域的中间部分，设定一个阈值，可以将这两个区域分割开来。这里我们选择阈值为110.</p>
 <p>对于二值化后的图片，我们还可以通过数学形态学中的<code>膨胀</code>算子对图像进行视觉增强操作。</p>
 <p>现在总结<strong>技术路线</strong>：</p>
