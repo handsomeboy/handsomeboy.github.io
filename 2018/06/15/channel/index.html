@@ -90,12 +90,12 @@
 
 
 
-<meta name="description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将前景从背景中分离。编制了Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素">
+<meta name="description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将图像的前景从背景中分离。编制Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于颜色通道分离法去除图像中印章">
 <meta property="og:url" content="http://yoursite.com/2018/06/15/channel/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
-<meta property="og:description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将前景从背景中分离。编制了Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素">
+<meta property="og:description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将图像的前景从背景中分离。编制Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/scaleimage.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/Redchannel.jpg">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/histgram.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/RedThresh.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/erode.jpg">
-<meta property="og:updated_time" content="2018-06-15T09:32:05.175Z">
+<meta property="og:updated_time" content="2018-06-15T09:33:25.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于颜色通道分离法去除图像中印章">
-<meta name="twitter:description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将前景从背景中分离。编制了Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素">
+<meta name="twitter:description" content="摘要本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将图像的前景从背景中分离。编制Python程序并进行仿真，最终提取出的前景图非常令人满意。 问题给定如下一张图片： ​                                                我们希望去除图像中的红色印章，以便能更好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的">
 <meta name="twitter:image" content="http://yoursite.com/2018/06/15/channel/scaleimage.jpg">
 
 
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,383 字
+                  1,385 字
                 </span>
               
 
@@ -375,7 +375,7 @@
       
 
       
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将前景从背景中分离。编制了Python程序并进行仿真，最终提取出的前景图非常令人满意。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文以“去除图像中的红色印章”为研究对象，应用颜色特征，将图像的前景从背景中分离。编制Python程序并进行仿真，最终提取出的前景图非常令人满意。</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定如下一张图片：<img src="/2018/06/15/channel/scaleimage.jpg" title="图1 原始图片 (A)"> ​                                               </p>
 <p>我们希望去除图像中的<strong>红色</strong>印章，以便能更好地读取文字。</p>
 <h2 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h2><p>该问题中，<code>字</code>像素为前景（frontground），<code>印章</code>和<code>纸</code>所在的像素为背景(background)。我们希望能将前景(<code>字</code>)提取出来。</p>
