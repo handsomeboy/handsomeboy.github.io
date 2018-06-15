@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/histgram.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/RedThresh.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/06/15/channel/erode.jpg">
-<meta property="og:updated_time" content="2018-06-15T08:41:29.202Z">
+<meta property="og:updated_time" content="2018-06-15T08:43:35.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于颜色通道分离法去除图像中印章">
 <meta name="twitter:description" content="问题给定如下一张图片：​                                               图1 原始图片  (A) 我们希望去除图像中的红色的印章，以便能刚好地读取文字。 技术路线该问题中，字像素为前景（frontground），印章和纸所在的像素作为背景(back ground)。我们希望能将前景(字)提取出来。分析图片我们发现，字的颜色是黑色, 印章的颜色是红色，纸">
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,353 字
+                  1,341 字
                 </span>
               
 
@@ -390,8 +390,9 @@
 </blockquote>
 <p>此时，我们就可以通过一个<code>阈值</code>,将前景像素(<code>字</code>)提取出来。</p>
 <p>公式为：</p>
-<script type="math/tex; mode=display">I(x,y)= \begin{cases}    0,& \text{if } I(x,y)\leq  \text{threshold  }\\    255,  & \text{otherwise}\end{cases}</script><p>该阈值，可以通过求取图2的灰度直方图进行设定，如图6所示<br><img src="/2018/06/15/channel/histgram.png"></p>
-<p><center>图6 红色通道灰度直方图</center>（<strong>C</strong>）<br>​<br>我们可以看到，图6所示的红色通道直方图中，明显存在两个<code>集中区域</code>，左侧的区域灰度值较低，对应颜色为<code>黑色</code>，是前景像素（字）；右侧集中区域灰度值较高，对应颜色为白色区域，是背景像素（印章和纸）。</p>
+<script type="math/tex; mode=display">I(x,y)= \begin{cases}    0,& \text{if } I(x,y)\leq  \text{threshold  }\\    255,  & \text{otherwise}\end{cases}</script><p>该阈值，可以通过求取图2的灰度直方图进行设定，如图6所示</p>
+<img src="/2018/06/15/channel/histgram.png" title="图6 红色通道灰度直方图 （C）">
+<p>​<br>我们可以看到，图6所示的红色通道直方图中，明显存在两个<code>集中区域</code>，左侧的区域灰度值较低，对应颜色为<code>黑色</code>，是前景像素（字）；右侧集中区域灰度值较高，对应颜色为白色区域，是背景像素（印章和纸）。</p>
 <p>在这两个灰度集中的区域的中间部分，设定一个阈值，可以将这两个区域分割开来。这里我们选择阈值为110.</p>
 <p>对于二值化后的图片，我们还可以通过数学形态学中的<code>膨胀</code>算子对图像进行视觉增强操作。</p>
 <p>现在总结<strong>技术路线</strong>：</p>
@@ -638,7 +639,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.0k</span>
+    <span title="Site words total count">45.9k</span>
   
 </div>
 
