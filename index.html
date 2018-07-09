@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  564 字
+                  577 字
                 </span>
               
 
@@ -370,18 +370,10 @@
 </ol>
 <img src="/2018/07/09/anaconda/start.png" width="300">
 <ol>
-<li>查看当前当前存在的env环境，输入命令<figure class="highlight dos"><figcaption><span>conda env list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可以看到，当前的存在的env环境名称为`base`,它所在的目录为`C:\ProgramData\Anaconda3`,其中`*`表示当前所**激活（activate）**的环境是`base`</span><br><span class="line"></span><br><span class="line">&#123;% asset_img current.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">3</span>. 新建env环境，输入命令</span><br><span class="line">&gt; ```dos conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>查看当前当前存在的env环境，输入命令</li>
 </ol>
+<figure class="highlight dos"><figcaption><span>conda env list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到，当前的存在的env环境名称为`base`,它所在的目录为`C:\ProgramData\Anaconda3`,其中`*`表示当前所**激活（activate）**的环境是`base`</span><br><span class="line"></span><br><span class="line">&#123;% asset_img current.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 新建env环境，输入命令```dos conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span> ```接着输入`y`并回车，就会新建一个名为`myenv`,python版本为<span class="number">3</span>.<span class="number">7</span>的虚拟环境。</span><br><span class="line"></span><br><span class="line">&#123;% asset_img create.png <span class="number">600</span> 无向图%&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">4</span>. 再次查看所有的env环境。输入命令</span><br><span class="line">&gt; ```dos</span><br><span class="line">&gt; conda env list</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
-</blockquote>
-<img src="/2018/07/09/anaconda/create.png" width="600" title="无向图">
-<blockquote>
-<ol>
-<li>再次查看所有的env环境。输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>可以看到我们新建的<code>myenv</code>虚拟环境被安装在<code>C:\ProgramData\Anaconda3\envs\myenv</code>目录下</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/check.png" width="600">

@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Anaconda," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -91,7 +91,6 @@
 
 
 <meta name="description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：  开始菜单，找到Anaconda中的Anaconda Prom">
-<meta name="keywords" content="Anaconda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anaconda中建立虚拟python环境">
 <meta property="og:url" content="http://yoursite.com/2018/07/09/anaconda/index.html">
@@ -99,12 +98,11 @@
 <meta property="og:description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：  开始菜单，找到Anaconda中的Anaconda Prom">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/start.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/create.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/check.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/tensorflow.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/test.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/deactive.png">
-<meta property="og:updated_time" content="2018-07-09T16:21:44.055Z">
+<meta property="og:updated_time" content="2018-07-09T16:23:33.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anaconda中建立虚拟python环境">
 <meta name="twitter:description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：  开始菜单，找到Anaconda中的Anaconda Prom">
@@ -338,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  564 字
+                  577 字
                 </span>
               
 
@@ -382,18 +380,10 @@
 </ol>
 <img src="/2018/07/09/anaconda/start.png" width="300">
 <ol>
-<li>查看当前当前存在的env环境，输入命令<figure class="highlight dos"><figcaption><span>conda env list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可以看到，当前的存在的env环境名称为`base`,它所在的目录为`C:\ProgramData\Anaconda3`,其中`*`表示当前所**激活（activate）**的环境是`base`</span><br><span class="line"></span><br><span class="line">&#123;% asset_img current.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">3</span>. 新建env环境，输入命令</span><br><span class="line">&gt; ```dos conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>查看当前当前存在的env环境，输入命令</li>
 </ol>
+<figure class="highlight dos"><figcaption><span>conda env list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到，当前的存在的env环境名称为`base`,它所在的目录为`C:\ProgramData\Anaconda3`,其中`*`表示当前所**激活（activate）**的环境是`base`</span><br><span class="line"></span><br><span class="line">&#123;% asset_img current.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 新建env环境，输入命令```dos conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span> ```接着输入`y`并回车，就会新建一个名为`myenv`,python版本为<span class="number">3</span>.<span class="number">7</span>的虚拟环境。</span><br><span class="line"></span><br><span class="line">&#123;% asset_img create.png <span class="number">600</span> 无向图%&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">4</span>. 再次查看所有的env环境。输入命令</span><br><span class="line">&gt; ```dos</span><br><span class="line">&gt; conda env list</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
-</blockquote>
-<img src="/2018/07/09/anaconda/create.png" width="600" title="无向图">
-<blockquote>
-<ol>
-<li>再次查看所有的env环境。输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>可以看到我们新建的<code>myenv</code>虚拟环境被安装在<code>C:\ProgramData\Anaconda3\envs\myenv</code>目录下</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/check.png" width="600">
@@ -466,12 +456,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Anaconda/" rel="tag"># Anaconda</a>
-          
-        </div>
       
 
       
