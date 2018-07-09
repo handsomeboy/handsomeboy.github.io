@@ -370,59 +370,44 @@
 <li>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong></li>
 </ol>
 </blockquote>
-<img src="/2018/07/09/anaconda/start.png" width="600">
+<img src="/2018/07/09/anaconda/start.png" width="400">
 <blockquote>
 <ol>
-<li>查看当前当前存在的env环境，输入命令</li>
+<li>查看当前当前存在的env环境，输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
 </blockquote>
 <img src="/2018/07/09/anaconda/current.png" width="600">
 <blockquote>
 <ol>
-<li>新建env环境，输入命令</li>
+<li>新建env环境，输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/create.png" width="600" title="无向图">
 <blockquote>
 <ol>
-<li>再次查看所有的env环境。输入命令</li>
+<li>再次查看所有的env环境。输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>可以看到我们新建的<code>myenv</code>虚拟环境被安装在<code>C:\ProgramData\Anaconda3\envs\myenv</code>目录下</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/check.png" width="600">
 <blockquote>
 <ol>
-<li>激活<code>myenv</code>环境.输入命令</li>
+<li>激活<code>myenv</code>环境.输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda activate myenv</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda activate myenv</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>我们就<strong>激活</strong>了<code>muenv</code>环境。你可以看到命令提示符最前面的<code>base</code>已经变为<code>myenv</code>.</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/activate.png" width="600">
 <blockquote>
 <ol>
-<li>安装包。例如我们安装深度学习中用到的<code>keras</code>包，输入一下命令：</li>
+<li>安装包。例如我们安装深度学习中用到的<code>keras</code>包，输入一下命令：<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda install -c conda-forge keras </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda install -c conda-forge keras </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>值得注意的是，安装keras的过程中：</p>
 <ol>
 <li>需要安装依赖包，如<code>tensorflow</code>等。系统询问是否安装这些包。</li>
@@ -434,33 +419,19 @@
 <img src="/2018/07/09/anaconda/tensorflow.png" width="600">
 <blockquote>
 <ol>
-<li>检查包是否安装正确。输入一下命令：</li>
+<li>检查包是否安装正确。输入一下命令：<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; python </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; python </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>进入python交互环境。输入</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; import keras</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
+<p>进入python交互环境。输入&gt;<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; import keras</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 <p>载入keras包。我们看到命令行输出<code>Using TensorFlow backend.</code>,表示我们正确安装了keras包。</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/test.png" width="600">
 <blockquote>
 <ol>
-<li>退出<code>myenv</code>环境。输入以下命令</li>
+<li>退出<code>myenv</code>环境。输入以下命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">exit</span>()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">exit</span>()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>退出python环境。输入</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda deactivate</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
+<p>退出python环境。输入<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda deactivate</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 <p>退出<code>myenv</code>环境。回到<code>base</code>环境。</p>
 </blockquote>
 <img src="/2018/07/09/anaconda/deactive.png" width="600">
