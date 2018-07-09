@@ -365,13 +365,15 @@
           
             <p>Anaconda可以看做是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种<code>包(package)</code>,包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。</p>
 <p>在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：</p>
-<h1 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h1><p> 开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong>.</p>
- <img src="/2018/07/09/anaconda/start.png" width="300">
-<h1 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h1><p> 查看当前存在的env环境，输入命令</p>
- <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
-<p> 可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
- <img src="/2018/07/09/anaconda/current.png" width="600">
 <ol>
+<li><p>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong>.</p>
+<img src="/2018/07/09/anaconda/start.png" width="300">
+</li>
+<li><p>查看当前存在的env环境，输入命令</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+<p>可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
+<img src="/2018/07/09/anaconda/current.png" width="600">
+</li>
 <li><p>新建env环境，输入命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
 <p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
