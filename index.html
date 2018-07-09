@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  555 字
+                  536 字
                 </span>
               
 
@@ -390,7 +390,18 @@
 <img src="/2018/07/09/anaconda/activate.png" width="600">
 </li>
 <li><p>安装包。例如我们安装深度学习中用到的<code>keras</code>包，输入以下命令：</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> conda install -c conda-forge keras </span><br><span class="line"> ``` </span><br><span class="line"> 值得注意的是，安装keras的过程中：</span><br><span class="line"></span><br><span class="line"> * 需要安装依赖包，如`tensorflow`等。系统询问是否安装这些包。</span><br><span class="line"> * 需要升级一些包，系统询问是否升级这些包</span><br><span class="line"> * python的版本需要从<span class="number">3</span>.<span class="number">7</span>降低到<span class="number">3</span>.<span class="number">6</span>版本。系统询问是否降级。</span><br><span class="line"> </span><br><span class="line"> 输入`y`并回车。等待一段时间后，系统就安装好keras。</span><br><span class="line"></span><br><span class="line"> &#123;% asset_img tensorflow.png <span class="number">600</span>  %&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>. 检查包是否安装正确。输入以下命令：</span><br><span class="line"></span><br><span class="line"> ```dos</span><br><span class="line"> python</span><br></pre></td></tr></table></figure>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge keras</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，安装keras的过程中：</p>
+<ul>
+<li>需要安装依赖包，如<code>tensorflow</code>等。系统询问是否安装这些包。</li>
+<li>需要升级一些包，系统询问是否升级这些包</li>
+<li>python的版本需要从3.7降低到3.6版本。系统询问是否降级。</li>
+</ul>
+<p>输入<code>y</code>并回车。等待一段时间后，系统就安装好keras。</p>
+<img src="/2018/07/09/anaconda/tensorflow.png" width="600">
+</li>
+<li><p>检查包是否安装正确。输入以下命令：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
 <p>进入python交互环境。输入</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import keras</span><br></pre></td></tr></table></figure>
 <p>载入keras包。我们看到命令行输出<code>Using TensorFlow backend.</code>,表示我们正确安装了keras包。</p>
