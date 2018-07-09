@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  548 字
+                  546 字
                 </span>
               
 
@@ -368,24 +368,18 @@
 <ol>
 <li>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong></li>
 </ol>
-<p><img src="f:\handsomeboy\Desktop\anaconda\start.png" alt="start"></p>
+<img src="/2018/07/09/anaconda/start.png" width="350">
 <ol>
-<li>查看当前当前存在的env环境，输入命令<br>&gt;<blockquote>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
+<li>查看当前当前存在的env环境，输入命令</li>
+</ol>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+<p>可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
+<p><img src="f:\handsomeboy\Desktop\anaconda\current.png" alt="current"></p>
+<ol>
+<li>新建env环境，输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<blockquote>
-<p>可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
-</blockquote>
-<p><img src="f:\handsomeboy\Desktop\anaconda\current.png" alt="current"></p>
-<blockquote>
-<ol>
-<li>新建env环境，输入命令</li>
-</ol>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
-</blockquote>
 <p><img src="f:\handsomeboy\Desktop\anaconda\create.png" alt="create"></p>
 <blockquote>
 <ol>
