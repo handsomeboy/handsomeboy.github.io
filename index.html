@@ -366,36 +366,30 @@
             <p>Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种<code>包(package)</code>,包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。</p>
 <p>在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：</p>
 <ol>
-<li>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong></li>
-</ol>
-<img src="/2018/07/09/anaconda/start.png" width="200">
-<ol>
-<li>查看当前当前存在的env环境，输入命令</li>
-</ol>
+<li><p>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong></p>
+<img src="/2018/07/09/anaconda/start.png" width="250">
+</li>
+<li><p>查看当前当前存在的env环境，输入命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
 <p>可以看到，当前的存在的env环境名称为<code>base</code>,它所在的目录为<code>C:\ProgramData\Anaconda3</code>,其中<code>*</code>表示当前所<strong>激活（activate）</strong>的环境是<code>base</code></p>
 <img src="/2018/07/09/anaconda/current.png" width="600">
-<ol>
-<li>新建env环境，输入命令</li>
-</ol>
+</li>
+<li><p>新建env环境，输入命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
 <p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
 <img src="/2018/07/09/anaconda/create.png" width="600">
-<ol>
-<li>再次查看所有的env环境。输入命令</li>
-</ol>
+</li>
+<li><p>再次查看所有的env环境。输入命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
 <p>可以看到我们新建的<code>myenv</code>虚拟环境被安装在<code>C:\ProgramData\Anaconda3\envs\myenv</code>目录下</p>
 <img src="/2018/07/09/anaconda/check.png" width="600">
-<ol>
-<li>激活<code>myenv</code>环境.输入命令</li>
-</ol>
+</li>
+<li><p>激活<code>myenv</code>环境.输入命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate myenv</span><br></pre></td></tr></table></figure>
 <p>我们就<strong>激活</strong>了<code>muenv</code>环境。你可以看到命令提示符最前面的<code>base</code>已经变为<code>myenv</code>.</p>
 <img src="/2018/07/09/anaconda/activate.png" width="600">
-<ol>
-<li>安装包。例如我们安装深度学习中用到的<code>keras</code>包，输入一下命令：</li>
-</ol>
+</li>
+<li><p>安装包。例如我们安装深度学习中用到的<code>keras</code>包，输入一下命令：</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge keras</span><br></pre></td></tr></table></figure>
 <p>值得注意的是，安装keras的过程中：</p>
 <ul>
@@ -405,21 +399,22 @@
 </ul>
 <p>输入<code>y</code>并回车。等待一段时间后，系统就安装好keras。</p>
 <img src="/2018/07/09/anaconda/tensorflow.png" width="600">
-<ol>
-<li>检查包是否安装正确。输入一下命令：</li>
-</ol>
+</li>
+<li><p>检查包是否安装正确。输入一下命令：</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
 <p>进入python交互环境。输入</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import keras</span><br></pre></td></tr></table></figure>
 <p>载入keras包。我们看到命令行输出<code>Using TensorFlow backend.</code>,表示我们正确安装了keras包。</p>
 <img src="/2018/07/09/anaconda/test.png" width="600">
-<ol>
-<li>退出<code>myenv</code>环境。输入以下命令</li>
-</ol>
+</li>
+<li><p>退出<code>myenv</code>环境。输入以下命令</p>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exit</span>()</span><br></pre></td></tr></table></figure>
-<p>退出python环境。输入<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure></p>
+<p>退出python环境。输入</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
 <p>退出<code>myenv</code>环境。回到<code>base</code>环境。</p>
 <img src="/2018/07/09/anaconda/deactive.png" width="600">
+</li>
+</ol>
 
           
         
