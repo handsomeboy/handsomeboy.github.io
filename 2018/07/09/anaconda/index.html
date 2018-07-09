@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Anaconda," />
 
 
 
@@ -90,16 +90,25 @@
 
 
 
+<meta name="description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：   开始菜单，找到Anaconda中的Anaconda Pro">
+<meta name="keywords" content="Anaconda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="喜欢一个人，只是一个人的事">
-<meta property="og:url" content="http://yoursite.com/2017/11/15/love/index.html">
+<meta property="og:title" content="Anaconda中建立虚拟python环境">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/anaconda/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
+<meta property="og:description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：   开始菜单，找到Anaconda中的Anaconda Pro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/11/15/love/love.jpg">
-<meta property="og:updated_time" content="2017-11-15T13:11:08.614Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/start.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/create.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/check.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/tensorflow.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/test.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/anaconda/deactive.png">
+<meta property="og:updated_time" content="2018-07-09T16:14:18.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="喜欢一个人，只是一个人的事">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/15/love/love.jpg">
+<meta name="twitter:title" content="Anaconda中建立虚拟python环境">
+<meta name="twitter:description" content="Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种包(package),包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。 在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：   开始菜单，找到Anaconda中的Anaconda Pro">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/09/anaconda/start.png">
 
 
 
@@ -129,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/15/love/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/09/anaconda/"/>
 
 
 
 
 
-  <title>喜欢一个人，只是一个人的事 | 韩鼎の个人网站</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Anaconda中建立虚拟python环境 | 韩鼎の个人网站</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -252,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/15/love/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/anaconda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="韩鼎">
@@ -269,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">喜欢一个人，只是一个人的事</h1>
+          <h1 class="post-title" itemprop="name headline">Anaconda中建立虚拟python环境</h1>
         
 
         <div class="post-meta">
@@ -281,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T21:10:18+08:00">
-                2017-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T23:48:16+08:00">
+                2018-07-09
               </time>
             
 
@@ -300,9 +309,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/15/love/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/09/anaconda/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/15/love/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/09/anaconda/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -329,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  564 字
                 </span>
               
 
@@ -345,7 +354,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -366,7 +375,60 @@
       
 
       
-        <img src="/2017/11/15/love/love.jpg">
+        <p>Anaconda可以看做是是Python的发行版，里面集成了python解释器，包管理工具以及各种科学计算相关的开源包。更为关键的是，Anaconda可以通过conda管理各种<code>包(package)</code>,包括安装、更新以及卸载等，帮我们解决了各种包的依赖问题。</p>
+<p>在Windows10系统下，我们建立虚拟python环境，并且安装包的步骤如下：</p>
+<blockquote>
+<ol>
+<li>开始菜单，找到Anaconda中的<code>Anaconda Prompt</code>,并以<strong>管理员权限打开</strong></li>
+</ol>
+</blockquote>
+<img src="/2018/07/09/anaconda/start.png" width="300">
+<blockquote>
+<ol>
+<li>查看当前当前存在的env环境，输入命令<figure class="highlight dos"><figcaption><span>conda env list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 可以看到，当前的存在的env环境名称为`base`,它所在的目录为`C:\ProgramData\Anaconda3`,其中`*`表示当前所**激活（activate）**的环境是`base`</span><br><span class="line"></span><br><span class="line">&#123;% asset_img current.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">3</span>. 新建env环境，输入命令</span><br><span class="line">&gt; ```dos conda create --name myenv python=<span class="number">3</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>接着输入<code>y</code>并回车，就会新建一个名为<code>myenv</code>,python版本为3.7的虚拟环境。</p>
+</blockquote>
+<img src="/2018/07/09/anaconda/create.png" width="600" title="无向图">
+<blockquote>
+<ol>
+<li>再次查看所有的env环境。输入命令<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; conda env list</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可以看到我们新建的<code>myenv</code>虚拟环境被安装在<code>C:\ProgramData\Anaconda3\envs\myenv</code>目录下</p>
+</blockquote>
+<img src="/2018/07/09/anaconda/check.png" width="600">
+<blockquote>
+<ol>
+<li>激活<code>myenv</code>环境.输入命令<figure class="highlight dos"><figcaption><span>conda activate myenv ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; 我们就**激活**了`muenv`环境。你可以看到命令提示符最前面的`base`已经变为`myenv`.</span><br><span class="line"></span><br><span class="line">&#123;% asset_img activate.png <span class="number">600</span> %&#125;</span><br><span class="line"></span><br><span class="line">&gt; <span class="number">6</span>. 安装包。例如我们安装深度学习中用到的`keras`包，输入一下命令：</span><br><span class="line">&gt; ```dos</span><br><span class="line">&gt; conda install -c conda-forge keras</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>值得注意的是，安装keras的过程中：</p>
+<ol>
+<li>需要安装依赖包，如<code>tensorflow</code>等。系统询问是否安装这些包。</li>
+<li>需要升级一些包，系统询问是否升级这些包</li>
+<li>python的版本需要从3.7降低到3.6版本。系统询问是否降级。</li>
+</ol>
+<p>输入<code>y</code>并回车。等待一段时间后，系统就安装好keras。</p>
+</blockquote>
+<img src="/2018/07/09/anaconda/tensorflow.png" width="600">
+<blockquote>
+<ol>
+<li>检查包是否安装正确。输入一下命令：<figure class="highlight dos"><figcaption><span>python ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 进入python交互环境。输入&gt;</span><br><span class="line">&gt; ```dos</span><br><span class="line">&gt; import keras</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>载入keras包。我们看到命令行输出<code>Using TensorFlow backend.</code>,表示我们正确安装了keras包。</p>
+</blockquote>
+<img src="/2018/07/09/anaconda/test.png" width="600">
+<blockquote>
+<ol>
+<li>退出<code>myenv</code>环境。输入以下命令<figure class="highlight dos"><figcaption><span>exit() ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 退出python环境。输入</span><br><span class="line">&gt; ```dos conda deactivate</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>退出<code>myenv</code>环境。回到<code>base</code>环境。</p>
+</blockquote>
+<img src="/2018/07/09/anaconda/deactive.png" width="600">
 
       
     </div>
@@ -407,6 +469,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Anaconda/" rel="tag"># Anaconda</a>
+          
+        </div>
+      
 
       
       
@@ -416,8 +484,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/14/shanghai/" rel="next" title="一个80后上海小资男私秘情史【转】">
-                <i class="fa fa-chevron-left"></i> 一个80后上海小资男私秘情史【转】
+              <a href="/2018/06/15/channel/" rel="next" title="基于颜色通道分离法去除图像中印章">
+                <i class="fa fa-chevron-left"></i> 基于颜色通道分离法去除图像中印章
               </a>
             
           </div>
@@ -425,10 +493,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/06/yinxing/" rel="prev" title="你好，阳光！">
-                你好，阳光！ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -728,9 +792,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/11/15/love/';
-          this.page.identifier = '2017/11/15/love/';
-          this.page.title = '喜欢一个人，只是一个人的事';
+          this.page.url = 'http://yoursite.com/2018/07/09/anaconda/';
+          this.page.identifier = '2018/07/09/anaconda/';
+          this.page.title = 'Anaconda中建立虚拟python环境';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://www-deanhan-com.disqus.com/embed.js';
