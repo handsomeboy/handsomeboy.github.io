@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/frog_pred.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel_pred.png">
-<meta property="og:updated_time" content="2018-07-26T06:01:39.176Z">
+<meta property="og:updated_time" content="2018-07-26T06:08:31.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VGG16学习笔记">
 <meta name="twitter:description" content="摘要本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出卷积神经">
@@ -384,7 +384,7 @@
 <p>该模型参加2014年的 ImageNet图像分类与定位挑战赛，取得了优异成绩：在分类任务上排名第二，在定位任务上排名第一。</p>
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>VGG中根据<strong>卷积核大小</strong>和<strong>卷积层数目</strong>的不同，可分为<code>A</code>，<code>A-LRN</code>,<code>B</code>,<code>C</code>,<code>D</code>,<code>E</code>共6个配置(ConvNet Configuration)，其中以<code>D</code>,<code>E</code>两种配置较为常用，分别称为<code>VGG16</code>和<code>VGG19</code>。</p>
 <p>下图给出了VGG的六种结构配置：</p>
-<img src="/2018/07/26/vgg16/table.png" width="700">
+<img src="/2018/07/26/vgg16/table.png" width="700" title="图1 VGG个模型配置">
 <p>上图中，每一列对应一种结构配置。例如，图中绿色部分即指明了VGG16所采用的结构。</p>
 <p>我们针对VGG16进行具体分析发现，<code>VGG16</code>共包含：</p>
 <ul>
