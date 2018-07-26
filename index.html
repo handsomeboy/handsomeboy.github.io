@@ -423,7 +423,7 @@
 </li>
 </ul>
 <p>FeiFei Li在CS231的课件中给出了整个网络的全部参数的计算过程（不考虑偏置），如下图所示：</p>
-<img src="/2018/07/26/vgg16/ppt.png" width="700">
+<img src="/2018/07/26/vgg16/ppt.png" width="700" title="图4 训练参数计算">
 <p>图中蓝色是计算权重参数数量的部分；红色是计算所需存储容量的部分。</p>
 <p>VGG16具有如此之大的参数数目，可以预期它具有很高的拟合能力；但同时缺点也很明显：</p>
 <ul>
@@ -459,14 +459,14 @@
 <p>代码及图片文件全部放在我的<a href="https://github.com/handsomeboy/vgg16" target="_blank" rel="noopener">github</a></p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>分别对<code>虎（tiger）</code>,<code>贝果（bagel）</code>,<code>树蛙（tree frog）</code>三张图片进行分类：</p>
 <hr>
-<img src="/2018/07/26/vgg16/tiger.jpg" width="600">
-<img src="/2018/07/26/vgg16/tiger_pred.png" width="600">
+<img src="/2018/07/26/vgg16/tiger.jpg" width="600" title="图5 测试图(虎)">
+<img src="/2018/07/26/vgg16/tiger_pred.png" width="600" title="图6 预测分类(虎)">
 <hr>
-<img src="/2018/07/26/vgg16/frog.jpg" width="600">
-<img src="/2018/07/26/vgg16/frog_pred.png" width="600">
+<img src="/2018/07/26/vgg16/frog.jpg" width="600" title="图7 测试图(树蛙)">
+<img src="/2018/07/26/vgg16/frog_pred.png" width="600" title="图8 预测分类(树蛙)">
 <hr>
-<img src="/2018/07/26/vgg16/bagel.jpg" width="600">
-<img src="/2018/07/26/vgg16/bagel_pred.png" width="600">
+<img src="/2018/07/26/vgg16/bagel.jpg" width="600" title="图9 测试图(贝果)">
+<img src="/2018/07/26/vgg16/bagel_pred.png" width="600" title="图10 预测分类(贝果)">
 <p>可以看到，VGG16对这三幅图片均分类正确，且具有较高的准确率。</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文对VGG16深度学习模型的结构进行了介绍，介绍了结构特点，分析其优缺点。通过调用Keras中已有的模型对三幅测试图片进行测试，验证了VGG16在图片分类分类任务上的优异表现。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
