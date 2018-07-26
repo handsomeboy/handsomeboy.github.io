@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="摘要本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出卷积神经">
+<meta name="description" content="摘要本文对图片分类任务中经典的深度学习模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出">
 <meta name="keywords" content="VGG16,keras">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VGG16学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/07/26/vgg16/index.html">
 <meta property="og:site_name" content="韩鼎の个人网站">
-<meta property="og:description" content="摘要本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出卷积神经">
+<meta property="og:description" content="摘要本文对图片分类任务中经典的深度学习模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/table.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/block.png">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/frog_pred.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel_pred.png">
-<meta property="og:updated_time" content="2018-07-26T06:37:33.707Z">
+<meta property="og:updated_time" content="2018-07-26T06:41:59.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VGG16学习笔记">
-<meta name="twitter:description" content="摘要本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出卷积神经">
+<meta name="twitter:description" content="摘要本文对图片分类任务中经典的深度学习模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出">
 <meta name="twitter:image" content="http://yoursite.com/2018/07/26/vgg16/table.png">
 
 
@@ -342,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,474 字
+                  2,478 字
                 </span>
               
 
@@ -379,7 +379,7 @@
       
 
       
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文对图片分类任务中经典的深度学习模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VGG是由Simonyan 和Zisserman在文献《<a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener"><em>Very Deep Convolutional Networks for Large Scale Image Recognition</em></a>》中提出卷积神经网络模型，其名称来源于作者所在的牛津大学视觉几何组(Visual Geometry Group)的缩写。</p>
 <p>该模型参加2014年的 ImageNet图像分类与定位挑战赛，取得了优异成绩：在分类任务上排名第二，在定位任务上排名第一。</p>
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>VGG中根据<strong>卷积核大小</strong>和<strong>卷积层数目</strong>的不同，可分为<code>A</code>，<code>A-LRN</code>,<code>B</code>,<code>C</code>,<code>D</code>,<code>E</code>共6个配置(ConvNet Configuration)，其中以<code>D</code>,<code>E</code>两种配置较为常用，分别称为<code>VGG16</code>和<code>VGG19</code>。</p>
