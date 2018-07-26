@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/frog_pred.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/vgg16/bagel_pred.png">
-<meta property="og:updated_time" content="2018-07-26T07:06:11.901Z">
+<meta property="og:updated_time" content="2018-07-26T07:06:57.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VGG16学习笔记">
 <meta name="twitter:description" content="摘要本文对图片分类任务中经典的深度学习模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。 前言VGG是由Simonyan 和Zisserman在文献《Very Deep Convolutional Networks for Large Scale Image Recognition》中提出">
@@ -342,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,485 字
+                  2,486 字
                 </span>
               
 
@@ -444,7 +444,7 @@
 <p>VGG16具有如此之大的参数数目，可以预期它具有很高的拟合能力；但同时缺点也很明显：</p>
 <ul>
 <li>即训练时间过长，调参难度大。</li>
-<li>需要的存储容量大，不利于部署。例如存储VGG16权重值文件的大小为533MB，不利于安装到嵌入式系统中。 </li>
+<li>需要的存储容量大，不利于部署。例如存储VGG16权重值文件的大小为500多MB，不利于安装到嵌入式系统中。 </li>
 </ul>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>下面，我们应用Keras对VGG16的图像分类能力进行试验。</p>
 <p>Keras是一个高层神经网络API,<em>Keras</em>由纯Python编写 ，是tensorflow和Theano等底层深度学习库的高级封装 。使用Keras时，我们不需要直接调用底层API构建深度学习网络，仅调用keras已经封装好的函数即可。</p>
