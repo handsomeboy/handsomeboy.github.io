@@ -250,6 +250,278 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/vgg16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩鼎">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩鼎の个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/26/vgg16/" itemprop="url">VGG16学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T13:24:11+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/26/vgg16/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/26/vgg16/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,172 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="VGG学习笔记"><a href="#VGG学习笔记" class="headerlink" title="VGG学习笔记"></a>VGG学习笔记</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文对图片分类任务中的经典模型VGG16进行了简要介绍，分析了其结构，并讨论了其优缺点。调用Keras中已有的VGG16模型测试其分类性能，结果表明VGG16对三幅测试图片均能正确分类。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VGG是由Simonyan 和Zisserman在文献《<a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener"><em>Very Deep Convolutional Networks for Large Scale Image Recognition</em></a>》中提出卷积神经网络模型，其名称来源于作者所在的牛津大学视觉几何组(Visual Geometry Group)的缩写。</p>
+<p>该模型参加2014年的 ImageNet图像分类与定位挑战赛，取得了优异成绩：在分类任务上排名第二，在定位任务上排名第一。</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>VGG中根据<strong>卷积核大小</strong>和<strong>卷积层数目</strong>的不同，可分为<code>A</code>，<code>A-LRN</code>,<code>B</code>,<code>C</code>,<code>D</code>,<code>E</code>共6个配置(ConvNet Configuration)，其中以<code>D</code>,<code>E</code>两种配置较为常用，分别称为<code>VGG16</code>和<code>VGG19</code>。</p>
+<p>下图给出了VGG的六种结构配置：</p>
+<img src="/2018/07/26/vgg16/table.png" width="300">
+<p>上图中，每一列对应一种结构配置。例如，图中绿色部分即指明了VGG16所采用的结构。</p>
+<p>我们针对VGG16进行具体分析发现，<code>VGG16</code>共包含：</p>
+<ul>
+<li>13个卷积层（Convolutional Layer），分别用conv3-XXX表示</li>
+<li>3个全连接层（Fully connected Layer）,分别用FC-XXXX表示</li>
+<li>5个池化层（Pool layer）,分别用maxpool表示</li>
+</ul>
+<p>其中，卷积层和全连接层具有权重系数，因此也被称为<code>权重层</code>，总数目为13+3=16，这即是VGG16中16的来源。(池化层不涉及权重，因此不属于权重层，不被计数)。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>VGG16的突出特点是<strong>简单</strong>，体现在：</p>
+<ol>
+<li><p>卷积层均采用相同的卷积核参数</p>
+<p>卷积层均表示为<code>conv3-XXX</code>，其中<code>conv3</code>说明该卷积层采用的卷积核的尺寸(kernel size)是3，即宽（width）和高（height）均为3，<code>3*3</code>是<strong>很小的卷积核尺寸</strong>，结合其它参数（步幅stride=1，填充方式padding=same），这样就能够使得每一个卷积层(张量)与前一层（张量）保持相同的宽和高。<code>XXX</code>代表卷积层的通道数。</p>
+</li>
+<li><p>池化层均采用相同的池化核参数</p>
+<p>池化层的参数均为2$\times$2，步幅stride=2，max的池化方式，这样就能够使得每一个池化层（张量）的宽和高是前一层（张量）的$\dfrac{1}{2}$。</p>
+</li>
+<li><p>模型是由若干卷积层和池化层堆叠（stack）的方式构成，比较容易形成较深的网络结构（在2014年，16层已经被认为很深了）。</p>
+</li>
+</ol>
+<p>综合上述分析，可以概括VGG的优点为: <strong>Small filters, Deeper networks </strong></p>
+<p>下图给出了VGG16的具体结构示意图：</p>
+<img src="/2018/07/26/vgg16/block.png" width="300">
+<h2 id="块结构"><a href="#块结构" class="headerlink" title="块结构"></a>块结构</h2><p>我们注意图1右侧，VGG16的卷积层和池化层可以划分为不同的块（Block），从前到后依次编号为Block1~block5。每一个块内包含<strong>若干卷积层</strong>和<strong>一个池化层</strong>。例如：<code>Block4</code>包含：</p>
+<ul>
+<li>3个卷积层，conv3-512</li>
+<li>1个池化层，maxpool</li>
+</ul>
+<p>并且同一块内，卷积层的<strong>通道（channel）数</strong>是相同的，例如：</p>
+<ul>
+<li><code>block2</code>中包含2个卷积层，每个卷积层用<code>conv3-128</code>表示,即卷积核为：$3\times 3$，通道数都是128</li>
+<li><code>block3</code>中包含3个卷积层，每个卷积层用<code>conv3-512</code>表示,即卷积核为：$3\times 3 $，通道数都是256</li>
+</ul>
+<p>下面给出按照块划分的VGG16的结构图，可以结合图2进行理解：</p>
+<img src="/2018/07/26/vgg16/VGG16.png" width="300">
+<p>VGG的输入图像是224$\times$224$\times$3的图像张量(tensor),随着层数的增加，后一个块内的张量相比于前一个块内的张量：</p>
+<ul>
+<li>通道数翻倍，由64依次增加到128，再到256，直至512保持不变，不再翻倍</li>
+<li>高和宽变减半，由224$\rightarrow$ 112$\rightarrow$ 56$\rightarrow$28$\rightarrow$ 14$\rightarrow$ 7</li>
+</ul>
+<h2 id="权重参数"><a href="#权重参数" class="headerlink" title="权重参数"></a>权重参数</h2><p>尽管VGG的结构简单，但是所包含的权重数目却很大，达到了惊人的138 357 544 个参数。这些参数包括<strong>卷积核权重</strong>和<strong>全连接层权重</strong>。</p>
+<ul>
+<li><p>例如，对于一层卷积，由于输入图的通道数是3，网络必须学习大小为3×3，通道数为3的的卷积核，这样的卷积核有64个，因此总共有（3 <em> 3 </em> 3）* 64 = 1728个参数。</p>
+</li>
+<li><p>计算全连接层的权重参数数目的方法为：</p>
+<p>​                             <script type="math/tex">前一层节点数\times 本层的节点数</script>。</p>
+<p> 因此，全连接层的参数分别为：</p>
+<ul>
+<li>7 <em> 7 </em> 512 * 4096 + 4096 = 102,764,544</li>
+<li>4096 * 4096 + 4096 = 16,781,312</li>
+<li>4096 * 1000 + 1000 = 4,097 000</li>
+</ul>
+</li>
+</ul>
+<p>FeiFei Li在CS231的课件中给出了整个网络的全部参数的计算过程（不考虑偏置），如下图所示：</p>
+<img src="/2018/07/26/vgg16/ppt.png" width="300">
+<p>图中蓝色是计算权重参数数量的部分；红色是计算所需存储容量的部分。</p>
+<p>VGG16具有如此之大的参数数目，可以预期它具有很高的拟合能力；但同时缺点也很明显：</p>
+<ul>
+<li>即训练时间过长，调参难度大。</li>
+<li>需要的存储容量大，不利于部署。例如存储VGG16权重值文件的大小为533MB，不利于安装到嵌入式系统中。 </li>
+</ul>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>下面，我们应用Keras对VGG16的图像分类能力进行试验。</p>
+<p>Keras是一个高层神经网络API,<em>Keras</em>由纯Python编写 ，是tensorflow和Theano等底层深度学习库的高级封装 。使用Keras时，我们不需要直接调用底层API构建深度学习网络，仅调用keras已经封装好的函数即可。</p>
+<p>本次试验平台：python 3.6 + tensorflow 1.8  + keras 2.2</p>
+<p>源代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Spyder Editor</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.applications.vgg16 <span class="keyword">import</span> VGG16</span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> image</span><br><span class="line"><span class="keyword">from</span> keras.applications.vgg16 <span class="keyword">import</span> preprocess_input, decode_predictions</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">percent</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'%.2f%%'</span> % (value * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># include_top=True，表示會載入完整的 VGG16 模型，包括加在最後3層的卷積層</span></span><br><span class="line"><span class="comment"># include_top=False，表示會載入 VGG16 的模型，不包括加在最後3層的卷積層，通常是取得 Features</span></span><br><span class="line"><span class="comment"># 若下載失敗，請先刪除 c:\&lt;使用者&gt;\.keras\models\vgg16_weights_tf_dim_ordering_tf_kernels.h5</span></span><br><span class="line">model = VGG16(weights=<span class="string">'imagenet'</span>, include_top=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Input：要辨識的影像</span></span><br><span class="line">img_path = <span class="string">'frog.jpg'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#img_path = 'tiger.jpg' 并转化为224*224的标准尺寸</span></span><br><span class="line">img = image.load_img(img_path, target_size=(<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = image.img_to_array(img) <span class="comment">#转化为浮点型</span></span><br><span class="line">x = np.expand_dims(x, axis=<span class="number">0</span>)<span class="comment">#转化为张量size为(1, 224, 224, 3)</span></span><br><span class="line">x = preprocess_input(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 預測，取得features，維度為 (1,1000)</span></span><br><span class="line">features = model.predict(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得前五個最可能的類別及機率</span></span><br><span class="line">pred=decode_predictions(features, top=<span class="number">5</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#整理预测结果,value</span></span><br><span class="line">values = []</span><br><span class="line">bar_label = []</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> pred:</span><br><span class="line">    values.append(element[<span class="number">2</span>])</span><br><span class="line">    bar_label.append(element[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#绘图并保存</span></span><br><span class="line">fig=plt.figure(<span class="string">u"Top-5 预测结果"</span>)</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>) </span><br><span class="line">ax.bar(range(len(values)), values, tick_label=bar_label, width=<span class="number">0.5</span>, fc=<span class="string">'g'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">u'probability'</span>) </span><br><span class="line">ax.set_title(<span class="string">u'Top-5'</span>) </span><br><span class="line"><span class="keyword">for</span> a,b <span class="keyword">in</span> zip(range(len(values)), values):</span><br><span class="line">    ax.text(a, b+<span class="number">0.0005</span>, percent(b), ha=<span class="string">'center'</span>, va = <span class="string">'bottom'</span>, fontsize=<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">fig = plt.gcf()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">name=img_path[<span class="number">0</span>:<span class="number">-4</span>]+<span class="string">'_pred'</span></span><br><span class="line">fig.savefig(name, dpi=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+<p>上述程序的基本流程是：</p>
+<ol>
+<li>载入相关模块，keras ，matplotlib，numpy</li>
+<li>下载<strong>已经训练好的</strong>模型文件：</li>
+<li>导入测试图像</li>
+<li>应用模型文件对图像分类</li>
+</ol>
+<p>需要额外说明的是：</p>
+<ul>
+<li><p>程序运行过程中:</p>
+<p>语句<code>model = VGG16(weights=&#39;imagenet&#39;, include_top=True)</code></p>
+<p>会下载已经训练好的文件到<code>c:\&lt;使用者&gt;\.keras\models</code>文件夹下，模型的文件名为<code>vgg16_weights_tf_dim_ordering_tf_kernels.h5</code>,大小为527MB</p>
+</li>
+<li><p>语句<code>pred=decode_predictions(features, top=5)[0]</code></p>
+<p>会下载分类信息文件到<code>c:\&lt;使用者&gt;\.keras\models</code>文件夹下，模型的文件名为<code>imagenet_class_index.json</code>,该文件指明了ImageNet大赛所用的1000个图像类的信息。（由于下载地址在aws上，需要科学上网，梯子请自备）</p>
+</li>
+<li><p>程序运行结束，会在工作目录下生成测试图片的预测图，给出了最有可能的前5个类列。名称为：<code>测试文件名_pred.jpg</code></p>
+</li>
+</ul>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>分别对<code>虎（tiger）</code>,<code>贝果（bagel）</code>,<code>树蛙（tree frog）</code>三张图片进行分类：</p>
+<hr>
+<img src="/2018/07/26/vgg16/tiger.jpg" width="300">
+<img src="/2018/07/26/vgg16/tiger_pred.png" width="300">
+<hr>
+<img src="/2018/07/26/vgg16/frog.jpg" width="300">
+<img src="/2018/07/26/vgg16/frog_pred.png" width="300">
+<hr>
+<img src="/2018/07/26/vgg16/bagel.jpg" width="300">
+<img src="/2018/07/26/vgg16/bagel_pred.png" width="300">
+<p>可以看到，VGG16对这三幅图片均分类正确，且具有较高的准确率。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文对VGG16深度学习模型的结构进行了介绍，介绍了结构特点，分析其优缺点。通过调用Keras中已有的模型对三幅测试图片进行测试，验证了VGG16在图片分类分类任务上的优异表现。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="">深度学习与TensorFlow:VGG论文复现</a></li>
+<li><a href="">深度学习与TensorFlow:实现卷积神经网络</a></li>
+<li><a href="https://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/" target="_blank" rel="noopener">ImageNet: VGGNet, ResNet, Inception, and Xception with Keras</a></li>
+<li><a href="https://www.cs.toronto.edu/~frossard/post/vgg16/" target="_blank" rel="noopener">VGG in TensorFlow</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10192162" target="_blank" rel="noopener">Day 09：CNN 經典模型應用</a></li>
+<li><a href="http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture9.pdf" target="_blank" rel="noopener">Lecture 9: CNN Architectures</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/anaconda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1998,180 +2270,6 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/more/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="韩鼎">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="韩鼎の个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/11/more/" itemprop="url">“再加一点”的智慧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T11:52:26+08:00">
-                2017-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/11/more/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/11/more/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  200 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> 对于以下场景，你肯定不会感到陌生：</p>
-<blockquote>
-<p>食堂打饭窗口，你点了最喜欢吃的糖醋小排。</p>
-<p>大妈手起勺落，盛起满满一勺，份量相当可观。</p>
-<p>你肯定感觉今天运气不错，然而，先别高兴得太早！</p>
-<p>只见大妈暗自手腕发力，勺子便“不听使唤”地抖动起来</p>
-<p>于是，你的糖醋小排便纷纷“花如雨下”，离你而去</p>
-<p>盛到你餐盘中的份量也就少的可怜</p>
-<p>空欢喜一场</p>
-</blockquote>
-<p>怎么样，这种人生的“大喜”与“大悲”切换地如此迅速，是不是感觉很刺激呀！</p>
-<p>这真的是一个很有趣的现象，值得我们从心理学的角度对其审视。</p>
-<p>这里涉及一个概念“心理预期”</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2222,7 +2320,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2235,7 +2333,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -2286,7 +2384,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46.5k</span>
+    <span title="Site words total count">48.7k</span>
   
 </div>
 
