@@ -390,7 +390,7 @@
 </ol>
 <p>综合上述分析，可以概括VGG的优点为: <strong>Small filters, Deeper networks </strong></p>
 <p>下图给出了VGG16的具体结构示意图：</p>
-<img src="/2018/07/26/vgg16/block.png" width="800">
+<img src="/2018/07/26/vgg16/block.png" width="800" title="图2 VGG16结构图">
 <h2 id="块结构"><a href="#块结构" class="headerlink" title="块结构"></a>块结构</h2><p>我们注意图1右侧，VGG16的卷积层和池化层可以划分为不同的块（Block），从前到后依次编号为Block1~block5。每一个块内包含<strong>若干卷积层</strong>和<strong>一个池化层</strong>。例如：<code>Block4</code>包含：</p>
 <ul>
 <li>3个卷积层，conv3-512</li>
@@ -402,7 +402,7 @@
 <li><code>block3</code>中包含3个卷积层，每个卷积层用<code>conv3-512</code>表示,即卷积核为：$3\times 3 $，通道数都是256</li>
 </ul>
 <p>下面给出按照块划分的VGG16的结构图，可以结合图2进行理解：</p>
-<img src="/2018/07/26/vgg16/VGG16.png" width="800">
+<img src="/2018/07/26/vgg16/VGG16.png" width="800" title="图3 按照块划分的VGG16结构图">
 <p>VGG的输入图像是224$\times$224$\times$3的图像张量(tensor),随着层数的增加，后一个块内的张量相比于前一个块内的张量：</p>
 <ul>
 <li>通道数翻倍，由64依次增加到128，再到256，直至512保持不变，不再翻倍</li>
