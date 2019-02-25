@@ -99,7 +99,7 @@
 <meta property="og:description" content="简介在github上看到一个图像分割的应用Mask-RCNN Shiny 该项目实现的功能为：给定一张彩色图片，除特定对象（如人，自行车）以外，我们将其余部分的颜色转换为灰度图。这样就实现了:   用颜色信息来强调对象的目的  技术路线该项目是算法Mask-RCNN的一个简单应用，技术路线大致为：  准备训练样本 训练MASK-RCNN模型 测试​    3.1 给定测试图片，生成对应的掩模（掩模">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/02/25/图像分割应用之肖像突出/combine.jpg">
-<meta property="og:updated_time" content="2019-02-25T04:42:47.014Z">
+<meta property="og:updated_time" content="2019-02-25T04:44:34.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像分割应用之对象色彩突出">
 <meta name="twitter:description" content="简介在github上看到一个图像分割的应用Mask-RCNN Shiny 该项目实现的功能为：给定一张彩色图片，除特定对象（如人，自行车）以外，我们将其余部分的颜色转换为灰度图。这样就实现了:   用颜色信息来强调对象的目的  技术路线该项目是算法Mask-RCNN的一个简单应用，技术路线大致为：  准备训练样本 训练MASK-RCNN模型 测试​    3.1 给定测试图片，生成对应的掩模（掩模">
@@ -382,7 +382,7 @@
 <li>测试<br>​    3.1 给定测试图片，生成对应的掩模（掩模为元素值为1或0的矩阵，大小与测试图像相同，其中1代表对象，0代表背景）<br>​    3.2 调用opencv，在测试图像中将背景部分设置为灰度图（根据每个像素RGB的值求得灰度值，然后将RGB三个通道的值设置为该灰度值）</li>
 <li>输出测试图片结果</li>
 </ol>
-<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>如图所示：<br><img src="/2019/02/25/图像分割应用之肖像突出/combine.jpg" width="600"></p>
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>如图所示：<br><img src="/2019/02/25/图像分割应用之肖像突出/combine.jpg" width="800"></p>
 <p>可以看到图像中，图片中大部分是灰色，我们的注意力会自然而然地转移到色彩丰富的区域，即女模特身上，这样就是实现了“色彩突出”。</p>
 
       
