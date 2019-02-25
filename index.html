@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  242 字
+                  298 字
                 </span>
               
 
@@ -370,18 +370,13 @@
 </blockquote>
 <h1 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h1><p>该项目是算法Mask-RCNN的一个简单应用，技术路线大致为：</p>
 <ol>
-<li><p>准备训练样本</p>
-</li>
-<li><p>训练MASK-RCNN模型</p>
-</li>
-<li><p>测试</p>
-<p>​    3.1 给定测试图片，生成对应的掩模（掩模为与测试图像大小相同的矩阵，元素为1或0，其中1代表对象，0代表背景）</p>
-<p>​    3.2 调用opencv，在测试图像中将背景部分设置为灰度图（根据每个像素RGB的值求得灰度值，然后将RGB三个通道的值设置为该灰度值）</p>
-</li>
-<li><p>输出测试图片结果</p>
-</li>
+<li>准备训练样本</li>
+<li>训练MASK-RCNN模型</li>
+<li>测试<br>​    3.1 给定测试图片，生成对应的掩模（掩模为元素值为1或0的矩阵，大小与测试图像相同，其中1代表对象，0代表背景）<br>​    3.2 调用opencv，在测试图像中将背景部分设置为灰度图（根据每个像素RGB的值求得灰度值，然后将RGB三个通道的值设置为该灰度值）</li>
+<li>输出测试图片结果</li>
 </ol>
-<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>如图所示：<br><img src="/2019/02/25/图像分割应用之肖像突出/combine.jpg" width="300"></p>
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>如图所示：<br><img src="/2019/02/25/图像分割应用之肖像突出/combine.jpg" width="600"></p>
+<p>可以看到图像中，图片中大部分是灰色，我们的注意力会自然而然地转移到色彩丰富的区域，即女模特身上，这样就是实现了“色彩突出”。</p>
 
           
         
@@ -2395,7 +2390,7 @@ i=1,\cdots,M\times N}\quad \sum_i \left(\alpha X_iY_i +\sum_{j\in Nb(i)} \beta Y
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">49.2k</span>
+    <span title="Site words total count">49.3k</span>
   
 </div>
 
