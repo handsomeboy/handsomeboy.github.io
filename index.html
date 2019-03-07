@@ -358,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  628 字
+                  624 字
                 </span>
               
 
@@ -410,21 +410,20 @@
 <ol>
 <li><p>在hexo文件夹下找到<code>_config.yml</code>并打开</p>
 </li>
-<li><p>找到<code>url: http://yoursite.com</code>，并改为<code>url: http://&lt;自己的网站域名&gt;</code>。</p>
-<p>例如本网站的域名是www.deanhan.com就改为如下形式：</p>
+<li><p>找到<code>url: http://yoursite.com</code>，并改为<code>url: http://&lt;自己的网站域名&gt;</code>。例如本网站的域名是  www.deanhan.com 就改为如下形式：</p>
 </li>
 </ol>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: http://www.deanhan.com/</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
-<h2 id="解决（步骤二）"><a href="#解决（步骤二）" class="headerlink" title="解决（步骤二）"></a>解决（步骤二）</h2><p>通过上一步操作，还没未能解决问题，Disqus还是没有解析到文章的正确地址。这是因为Disqus后台中还是没有改变。此时我们需要在Disqus后台中继续进行操作：</p>
+<h2 id="解决（步骤二）"><a href="#解决（步骤二）" class="headerlink" title="解决（步骤二）"></a>解决（步骤二）</h2><p>通过上一步操作，还没未能解决问题，Disqus还是没有解析到文章的正确地址。这是因为Disqus后台中还是没有改变。此时我们需要在Disqus后台中继续进行：</p>
 <blockquote>
 <p><strong>手工修改解析地址</strong></p>
 </blockquote>
-<p>首先，登录Disqus网站，现在配置网站信息，在<code>Website URL</code>文本框下方点击<code>Learn how</code></p>
+<p>首先，登录Disqus网站，配置网站信息，在<code>Website URL</code>文本框下方点击<code>Learn how</code></p>
 <img src="/2019/03/07/Hexo中Disqus文章链接跳转错误/domain.png" width="800">
 <p>接着<br><img src="/2019/03/07/Hexo中Disqus文章链接跳转错误/domain2.png" width="800"></p>
 <p>接着点击<code>next</code>出现下图：</p>
 <img src="/2019/03/07/Hexo中Disqus文章链接跳转错误/domain3.png" width="800">
-<p>当前的域名是<code>http://yoursite.com</code>,现在将其改为<strong>自己网站的域名</strong>，例如本网站的域名：<a href="http://www.deanhan.com">http://www.deanhan.com</a></p>
+<p>当前的域名是<code>http://yoursite.com</code>，现在将其改为<strong>自己网站的域名</strong>，例如本网站的域名：<a href="http://www.deanhan.com">http://www.deanhan.com</a></p>
 <p>最后确认迁移Confirm Migration，我们就完成了Disqus后台中设置正确的网站域名。不过，该设置需要等到24小时才会生效。</p>
 <h2 id="另辟蹊径"><a href="#另辟蹊径" class="headerlink" title="另辟蹊径"></a>另辟蹊径</h2><p>步骤二是通过修改现有域名的方式来解决问题。实际上我们也可以用更暴力的方式进行解决：<strong>建立新的Disqus</strong>，如下图所示：</p>
 <img src="/2019/03/07/Hexo中Disqus文章链接跳转错误/add.png" width="400">
