@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tikz," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言私以为，学习语言最好的方式就是“案例学习”，通过学习例子，可以迅速地熟悉语言的语法，特点等，快速上手，及时的得到反馈，能很好地激发并保持学习兴趣。 Tikz是$\LaTeX$中绘图的一个包，可以绘制出精美的图形，非常适合学术出版中插入的绘制。 本系列通过“Make your hands dirty”的方式，学习Tikz手册中的例子，并对每条语句进行详细的分析注释，快速地掌握Tikz的基本绘图技">
+<meta name="keywords" content="tikz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tikz学习笔记(一)">
+<meta property="og:url" content="http://www.deanhan.com/2019/03/01/Tikz学习笔记-一/index.html">
+<meta property="og:site_name" content="韩鼎の个人网站">
+<meta property="og:description" content="前言私以为，学习语言最好的方式就是“案例学习”，通过学习例子，可以迅速地熟悉语言的语法，特点等，快速上手，及时的得到反馈，能很好地激发并保持学习兴趣。 Tikz是$\LaTeX$中绘图的一个包，可以绘制出精美的图形，非常适合学术出版中插入的绘制。 本系列通过“Make your hands dirty”的方式，学习Tikz手册中的例子，并对每条语句进行详细的分析注释，快速地掌握Tikz的基本绘图技">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.deanhan.com/2019/03/01/Tikz学习笔记-一/example.png">
+<meta property="og:updated_time" content="2019-03-01T11:58:20.088Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tikz学习笔记(一)">
+<meta name="twitter:description" content="前言私以为，学习语言最好的方式就是“案例学习”，通过学习例子，可以迅速地熟悉语言的语法，特点等，快速上手，及时的得到反馈，能很好地激发并保持学习兴趣。 Tikz是$\LaTeX$中绘图的一个包，可以绘制出精美的图形，非常适合学术出版中插入的绘制。 本系列通过“Make your hands dirty”的方式，学习Tikz手册中的例子，并对每条语句进行详细的分析注释，快速地掌握Tikz的基本绘图技">
+<meta name="twitter:image" content="http://www.deanhan.com/2019/03/01/Tikz学习笔记-一/example.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.deanhan.com/2019/03/01/Tikz学习笔记-一/"/>
+
+
+
+
+
+  <title>Tikz学习笔记(一) | 韩鼎の个人网站</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">韩鼎の个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">喜欢机器学习的大叔</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.deanhan.com/2019/03/01/Tikz学习笔记-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="韩鼎">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩鼎の个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tikz学习笔记(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T19:14:04+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>私以为，学习语言最好的方式就是“案例学习”，通过学习例子，可以迅速地熟悉语言的语法，特点等，快速上手，及时的得到反馈，能很好地激发并保持学习兴趣。</p>
+<p>Tikz是$\LaTeX$中绘图的一个包，可以绘制出精美的图形，非常适合学术出版中插入的绘制。</p>
+<p>本系列通过“Make your hands dirty”的方式，学习Tikz手册中的例子，并对每条语句进行详细的分析注释，快速地掌握Tikz的基本绘图技巧。</p>
+<p>目的在于：1)作为自己学习的备忘录 ，方便复习  2）方便后来人，希望能够帮助到Tikz的初学者。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">\documentclass[tikz,border=4pt]&#123;standalone&#125;  % 图片的边界是4pt</span><br><span class="line">\usepackage&#123;tikz&#125;</span><br><span class="line">\usepackage&#123;tkz-euclide&#125;</span><br><span class="line">\usetikzlibrary&#123;intersections&#125; %求线与线之间的交点</span><br><span class="line"></span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">	%开启tikzpicture环境</span><br><span class="line">	\begin&#123;tikzpicture&#125;[scale=3, line cap=round, &gt;=latex,</span><br><span class="line">	%scale对图片进行缩放，线的头部采用圆形round，其他rect方形，butt为无头部,&gt;代表箭头的样式</span><br><span class="line">	% Styles</span><br><span class="line">	axes/.style=,  %轴采用默认样式</span><br><span class="line">	important line/.style = &#123;very thick&#125;, %定义线的宽度为very thick</span><br><span class="line">	information text/.style = &#123;rounded corners, fill = red!10, inner sep=1ex&#125; ]</span><br><span class="line">	%圆角边框，内部填充颜色为red!10,即红色的10%，文字与边框的距离为1ex</span><br><span class="line"></span><br><span class="line">	% Colors 定义四种颜色名称，后续可直接引用</span><br><span class="line">	\colorlet&#123;anglecolor&#125;&#123;green!50!black&#125;</span><br><span class="line">	\colorlet&#123;sincolor&#125;&#123;red&#125;</span><br><span class="line">	\colorlet&#123;tancolor&#125;&#123;orange!80!black&#125;</span><br><span class="line">	\colorlet&#123;coscolor&#125;&#123;blue&#125;</span><br><span class="line">	</span><br><span class="line">	% The graphic</span><br><span class="line">	\draw[help lines,step=0.5cm] (-1.4,-1.4) grid (1.4,1.4);</span><br><span class="line">	% grid是网格命令，矩形的左下角和右上角坐标，线的类型为help line,步长为0.5cm</span><br><span class="line">	</span><br><span class="line">	\draw (0,0) circle [radius=1cm];</span><br><span class="line">	%画圆，圆心为(0,0),半径radius为1cm</span><br><span class="line">	</span><br><span class="line">	%开启scope环境，在整个大圆中，绘制一个局部图</span><br><span class="line">	\begin&#123;scope&#125;[axes]</span><br><span class="line">	\draw[-&gt;] (-1.5,0) -- (1.5,0) node[right] &#123;$x$&#125;	coordinate(x axis);</span><br><span class="line">	% 画x轴线，起点为(-1.5,0)终点为(1.5,0);-&gt;在线段末端画箭头， node在为点(1.5,0)添加标签，right标签位置是在点的右侧，标签符号为x，该点的名称为x axis</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	\draw[-&gt;] (0,-1.5) -- (0,1.5) node[above] &#123;$y$&#125; coordinate(y axis);</span><br><span class="line">	%同理</span><br><span class="line">	</span><br><span class="line">	% \foreach 命令指示对数组中的每个元素进行后面的操作</span><br><span class="line">	% \x/\xtext 表示数组元素可以是\x 形式的或\x/\xtext 形式的，中间的“/”是固定用法</span><br><span class="line">	% 同一个元素位置上用符号/并列两种形式时，该元素可用两种形式之一引用，例如-0.5</span><br><span class="line">	% 选项 [xshift=\x cm] 指示将后面绘制的线段沿着x 轴平移 \x cm</span><br><span class="line">	\foreach \x/\xtext in &#123;-1, -.5/-\frac&#123;1&#125;&#123;2&#125;, 1&#125;	</span><br><span class="line">	\draw[xshift=\x cm] (0pt,1pt) -- (0pt,-1pt) node[below, fill=white] &#123;$\xtext$&#125;;</span><br><span class="line">	%node是在点(0pt,-1pt)移动\x cm后的位置处，加标签，位置是点的下方below，背景为白色，内容为\xtext</span><br><span class="line"></span><br><span class="line">			</span><br><span class="line">	% y轴上面加标签</span><br><span class="line">	\foreach \y/\ytext in &#123;-1, -.5/-\frac&#123;1&#125;&#123;2&#125;, .5/\frac&#123;1&#125;&#123;2&#125;, 1&#125;</span><br><span class="line">	\draw[yshift=\y cm] (1pt,0pt) -- (-1pt,0pt)</span><br><span class="line">	node[left,fill=white] &#123;$\ytext$&#125;;</span><br><span class="line">	</span><br><span class="line">	\end&#123;scope&#125; %结束scope环境</span><br><span class="line">	</span><br><span class="line">	%\filldraw是填充\fill和绘图\draw的结合。[]内的fill是填充的颜色，draw是线的形式</span><br><span class="line">	\filldraw[fill=green!20,  draw=anglecolor] (0,0) -- (3mm,0pt) 	arc [start angle=0, end angle=30, radius=3mm];</span><br><span class="line">	% arc绘制圆弧线，start angle是起始角度,end angle是终止角度，radius是半径，默认圆心是(0,0)</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	\draw (15:2mm) node[anglecolor] &#123;$\alpha$&#125;;</span><br><span class="line">	%极坐标点，15是角度，2m是长度，线型是anglecolor</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	\draw[important line,  sincolor]</span><br><span class="line">	(30:1cm) -- node[left=1pt,fill=white] &#123;$\sin \alpha$&#125;	(30:1cm |- x axis);</span><br><span class="line">	%绘制垂线，(30:1cm)是极坐标</span><br><span class="line">	% node[left=1pt,fill=white]在左侧打标签&#123;$\sin \alpha$&#125;</span><br><span class="line">	% 另一个点是通过求垂足得到的，即点30:1cm向下，x axis点向左，两条线相交</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	%同上</span><br><span class="line">	\draw[important line, coscolor]  (30:1cm |- x axis) -- node[below=2pt,fill=white]   &#123;$\cos \alpha$&#125; (0,0);</span><br><span class="line">	</span><br><span class="line">	% \path 命令声明它后面的对象是路径,路径的名字name是upward line，但是并没有绘制path</span><br><span class="line">	\path [name path = upward line] (1,0) -- (1,1);	</span><br><span class="line">	%同上</span><br><span class="line">	\path [name path=sloped line] (0,0) -- (30:1.5cm);</span><br><span class="line">	</span><br><span class="line">	% 求路径 upward line 与 sloped line 的交点，by=t将该交点命名为 t</span><br><span class="line">	\draw [name intersections=&#123;of=upward line and sloped line, by = t&#125;,very thick,orange] (1,0) -- node [right=1pt,fill=white]   &#123;$\displaystyle \tan \alpha \color&#123;black&#125;=   \frac&#123;&#123;\color&#123;red&#125;\sin \alpha&#125;&#125;&#123;\color&#123;blue&#125;\cos \alpha&#125;$&#125;(t);</span><br><span class="line">	%\displaystyle 定义显示公式样式</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	\draw (0,0) -- (t);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	%选项 [xshift=1.85cm] 将绘制的标签右移 1.85cm</span><br><span class="line">	% node才能打标签</span><br><span class="line">	% node的右侧，文本宽度为6cm，文本框的风格为 information text</span><br><span class="line">	\draw[xshift=1.85cm] %相当于给原点加标签，并平移</span><br><span class="line">	node[right, text width=6cm, information text]</span><br><span class="line">	&#123;</span><br><span class="line">		The &#123;\color&#123;anglecolor&#125; angle $\alpha$&#125; is $30^\circ$ in the</span><br><span class="line">		example ($\pi/6$ in radians). The &#123;\color&#123;sincolor&#125;sine of</span><br><span class="line">			$\alpha$&#125;, which is the height of the red line, is</span><br><span class="line">		\[</span><br><span class="line">		&#123;\color&#123;sincolor&#125; \sin \alpha&#125; = 1/2.</span><br><span class="line">		\]</span><br><span class="line">		By the Theorem of Pythagoras ...</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	\end&#123;tikzpicture&#125; %结束tikzpicture环境	</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单位圆与三角函数线"><a href="#单位圆与三角函数线" class="headerlink" title="单位圆与三角函数线"></a>单位圆与三角函数线</h2><img src="/2019/03/01/Tikz学习笔记-一/example.png" width="800" title="单位圆与三角函数线">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tikz/" rel="tag"># tikz</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/25/图像分割应用之肖像突出/" rel="next" title="图像分割应用之对象色彩突出">
+                <i class="fa fa-chevron-left"></i> 图像分割应用之对象色彩突出
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/02/Tikz学习笔记-二/" rel="prev" title="Tikz学习笔记(二)">
+                Tikz学习笔记(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">韩鼎</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位圆与三角函数线"><span class="nav-number">3.</span> <span class="nav-text">单位圆与三角函数线</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">韩鼎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
